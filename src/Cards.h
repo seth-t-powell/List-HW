@@ -7,12 +7,17 @@
 
 enum class Suit { SPADES, DIAMONDS, CLUBS, HEARTS };
 
-#define ACE   1
-#define JACK  11
-#define QUEEN 12
-#define KING  13
+using Rank = int;
 
-using Card = std::pair<Suit, int>;
+constexpr Rank ACE   = 1;
+constexpr Rank JACK  = 11;
+constexpr Rank QUEEN = 12;
+constexpr Rank KING  = 13;
+
+struct Card {
+    Suit suite;
+    Rank rank;
+};
 
 std::vector<Card> buildDeck(const char* filepath);
 

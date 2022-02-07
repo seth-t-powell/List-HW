@@ -5,7 +5,7 @@
 template <class T>
 class LinkedList {
 public:
-    typedef struct Node {
+    struct Node {
         Node* prev;
         T data;
         Node* next;
@@ -14,6 +14,7 @@ public:
         {
         }
     };
+    
 private:
     Node head, tail;
 public:
@@ -36,9 +37,9 @@ public:
     T& back();
     const T& back() const;
 
-    bool empty() const noexcept;
+    [[nodiscard]] bool empty() const noexcept;
 
-    size_t size() const noexcept;
+    [[nodiscard]] size_t size() const noexcept;
 
     void clear() noexcept;
 
@@ -104,15 +105,15 @@ const T& LinkedList<T>::back() const {
 }
 
 template <class T>
-bool LinkedList<T>::empty() const {
+[[nodiscard]] bool LinkedList<T>::empty() const noexcept {
 }
 
 template <class T>
-size_t LinkedList<T>::size() const {
+[[nodiscard]] size_t LinkedList<T>::size() const noexcept {
 }
 
 template <class T>
-void LinkedList<T>::clear() {
+void LinkedList<T>::clear() noexcept {
 }
 
 template <class T>
