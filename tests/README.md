@@ -44,6 +44,12 @@ The TAs can setup the project using:
 make -f ta-makefile CXX=clang++
 ```
 
+It will clone the `sample-submission` using `ssh`. To use `http` do the following:
+
+```
+make -f ta-makefile CXX=clang++ http
+```
+
 This downloads the solution from the sample-solution repo (default target). This is a live repo and you can commit directly back to the `sample-solution` repo. The `sample-solution` command (from above) will also create a file `ta_config` with make setting for TAs. For instance, can use `CXX` to set the compiler in a persistent way without editing the `makefile`. If you have a usecase, add more persistent settings!
 
 Then, use run `make run/${TEST}` to run the test for the file `${TEST}.cpp`. 
