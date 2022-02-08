@@ -4,7 +4,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 3.0)
 SET(CMAKE_CXX_STANDARD 17)
 
 # Name of the project
-PROJECT(Assignment1)
+PROJECT(List)
 
 # Get the list of all files.
 FILE(GLOB_RECURSE SOURCES "src/*.cpp")

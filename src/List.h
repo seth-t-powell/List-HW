@@ -9,12 +9,19 @@ class List {
     struct Node {
         T data;
         Node *next, *prev;
-        explicit Node(const T& data = T{}, Node* prev = nullptr, Node* next = nullptr)
-        : data{data}, prev{prev}, next{next} {}
+        explicit Node(Node* prev = nullptr, Node* next = nullptr)
+        : data{}, next{next}, prev{prev} {}
+        explicit Node(const T& data, Node* prev = nullptr, Node* next = nullptr)
+        : data{data}, next{next}, prev{prev} {}
+        explicit Node(T&& data, Node* prev = nullptr, Node* next = nullptr)
+        : data{std::move(data)}, next{next}, prev{prev} {}
     };
 
-    template <typename pointer_type, typename reference_type>
+    template <typename pointer_type, typename reference_type, typename node_type>
     class basic_iterator {
+        // FIXME: Awful solution to get access to Node within List but not externally. Works but makes me regret every line of code I've written.
+        template <typename P, typename R, typename N>
+        friend typename List<T>::Node* getNode(const basic_iterator<P, R, N>&);
     public:
         using iterator_category = std::bidirectional_iterator_tag;
         using value_type        = T;
@@ -22,7 +29,7 @@ class List {
         using pointer           = pointer_type;
         using reference         = reference_type;
     private:
-        using Node = typename List<value_type>::Node;
+        using Node = node_type;
 
         Node* node;
     public:
@@ -69,6 +76,9 @@ class List {
         }
     };
 
+    template <typename P, typename R, typename N>
+    friend typename List<T>::Node* getNode(const basic_iterator<P, R, N>& it) { return const_cast<typename List<T>::Node*>(it.node); }
+
 public:
     using value_type      = T;
     using size_type       = size_t;
@@ -77,11 +87,12 @@ public:
     using const_reference = const value_type&;
     using pointer         = value_type*;
     using const_pointer   = const value_type*;
-    using iterator        = basic_iterator<pointer, reference>;
-    using const_iterator  = basic_iterator<const_pointer, const_reference>;
+    using iterator        = basic_iterator<pointer, reference, Node>;
+    using const_iterator  = basic_iterator<const_pointer, const_reference, const Node>;
 
 private:
     Node head, tail;
+    size_type _size;
 
 public:
     List() {
