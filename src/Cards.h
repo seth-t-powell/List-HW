@@ -1,9 +1,8 @@
 #pragma once
 
-#include <utility>
-#include <vector>
+#include <fstream>
 
-#include "LinkedList.h"
+#include "List.h"
 
 enum class Suit { SPADES, DIAMONDS, CLUBS, HEARTS };
 
@@ -15,10 +14,10 @@ constexpr Rank QUEEN = 12;
 constexpr Rank KING  = 13;
 
 struct Card {
-    Suit suite;
+    Suit suit;
     Rank rank;
 };
 
-std::vector<Card> buildDeck(const char* filepath);
+List<Card> buildDeck(std::ifstream& file);
 
-LinkedList<Card> shuffle(const std::vector<Card>& deck);
+List<Card> shuffle(const List<Card>& deck);

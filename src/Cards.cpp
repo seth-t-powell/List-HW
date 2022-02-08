@@ -1,16 +1,21 @@
+#include <string>
+
 #include "Cards.h"
 
-#include <fstream>
+// You may want to write the following two functions, but they are not required
 
-// You may want to write the following function
 // std::istream& operator>>(std::istream& in, Suit& suit) {
 //     
 // }
 
-std::vector<Card> buildDeck(const char* filepath) {
+// Rank to_rank(const std::string& string) {
+//     
+//}
+
+List<Card> buildDeck(std::ifstream& file) {
 
 }
 
-LinkedList<Card> shuffle(const std::vector<Card>& deck) {
+List<Card> shuffle(const List<Card>& deck) {
     
 }

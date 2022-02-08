@@ -2,5 +2,5 @@
 
 // not a real test
 TEST(exists) {
-    LinkedList<int> ll;
+    List<int> ll;
 }
