@@ -11,9 +11,7 @@ class List {
         T data;
         Node *next, *prev;
         explicit Node(const T& data = T{}, Node* prev = nullptr, Node* next = nullptr)
-        : data{data}, prev{prev}, next{next}
-        {
-        }
+        : data{data}, prev{prev}, next{next} {}
     };
 
     template <typename pointer_type, typename reference_type>
@@ -36,22 +34,40 @@ class List {
         basic_iterator& operator=(const basic_iterator&) = default;
         basic_iterator& operator=(basic_iterator&&) = default;
 
-        explicit basic_iterator(Node* ptr) noexcept;
+        explicit basic_iterator(Node* ptr) noexcept {
+            // TODO - Don't forget the list initialier
+        }
 
-        reference operator*() const;
-        pointer operator->() const;
+        reference operator*() const {
+            // TODO
+        }
+        pointer operator->() const {
+            // TODO
+        }
 
         // Prefix Increment: ++a
-        basic_iterator& operator++();
+        basic_iterator& operator++() {
+            // TODO
+        }
         // Postfix Increment: a++
-        basic_iterator operator++(int);
+        basic_iterator operator++(int) {
+            // TODO
+        }
         // Prefix Decrement: --a
-        basic_iterator& operator--();
+        basic_iterator& operator--() {
+            // TODO
+        }
         // Postfix Decrement: a--
-        basic_iterator operator--(int);
+        basic_iterator operator--(int) {
+            // TODO
+        }
 
-        bool operator==(const basic_iterator& other) const noexcept;
-        bool operator!=(const basic_iterator& other) const noexcept;
+        bool operator==(const basic_iterator& other) const noexcept {
+            // TODO
+        }
+        bool operator!=(const basic_iterator& other) const noexcept {
+            // TODO
+        }
     };
 
 public:
@@ -69,47 +85,107 @@ private:
     Node head, tail;
 
 public:
-    List();
-    List( size_type count, const T& value );
-    explicit List( size_type count );
-    List( const List& other );
-    List( List&& other );
-    ~List();
-    List& operator=( const List& other );
-    List& operator=( List&& other ) noexcept;
+    List() {
+        // TODO - Don't forget the list initialier
+    }
+    List( size_type count, const T& value ) {
+        // TODO - Don't forget the list initialier
+    }
+    explicit List( size_type count ) {
+        // TODO - Don't forget the list initialier
+    }
+    List( const List& other ) {
+        // TODO - Don't forget the list initialier
+    }
+    List( List&& other ) {
+        // TODO - Don't forget the list initialier
+    }
+    ~List() {
+        // TODO
+    }
+    List& operator=( const List& other ) {
+        // TODO
+    }
+    List& operator=( List&& other ) noexcept {
+        // TODO
+    }
 
-    reference front();
-    const_reference front() const;
+    reference front() {
+        // TODO
+    }
+    const_reference front() const {
+        // TODO
+    }
 	
-    reference back();
-    const_reference back() const;
+    reference back() {
+        // TODO
+    }
+    const_reference back() const {
+        // TODO
+    }
 	
-    iterator begin() noexcept;
-    const_iterator begin() const noexcept;
-    const_iterator cbegin() const noexcept;
+    iterator begin() noexcept {
+        // TODO
+    }
+    const_iterator begin() const noexcept {
+        // TODO
+    }
+    const_iterator cbegin() const noexcept {
+        // TODO
+    }
 
-    iterator end() noexcept;
-    const_iterator end() const noexcept;
-    const_iterator cend() const noexcept;
+    iterator end() noexcept {
+        // TODO
+    }
+    const_iterator end() const noexcept {
+        // TODO
+    }
+    const_iterator cend() const noexcept {
+        // TODO
+    }
 
-    bool empty() const noexcept;
+    bool empty() const noexcept {
+        // TODO
+    }
 
-    size_type size() const noexcept;
+    size_type size() const noexcept {
+        // TODO
+    }
 
-    void clear() noexcept;
+    void clear() noexcept {
+        // TODO
+    }
 
-    iterator insert( const_iterator pos, const T& value );
-    iterator insert( const_iterator pos, T&& value );
+    iterator insert( const_iterator pos, const T& value ) {
+        // TODO
+    }
+    iterator insert( const_iterator pos, T&& value ) {
+        // TODO
+    }
 
-    iterator erase( const_iterator pos );
+    iterator erase( const_iterator pos ) {
+        // TODO
+    }
 
-    void push_back( const T& value );
-    void push_back( T&& value );
+    void push_back( const T& value ) {
+        // TODO
+    }
+    void push_back( T&& value ) {
+        // TODO
+    }
 
-    void pop_back();
+    void pop_back() {
+        // TODO
+    }
 	
-    void push_front( const T& value );
-	void push_front( T&& value );
+    void push_front( const T& value ) {
+        // TODO
+    }
+	void push_front( T&& value ) {
+        // TODO
+    }
 
-    void pop_front();
+    void pop_front() {
+        // TODO
+    }
 };
