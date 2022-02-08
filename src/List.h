@@ -1,9 +1,10 @@
 #pragma once
 
 #include <cstddef> // size_t
+#include <list> // size_t
 
 template <class T>
-class LinkedList {
+class List {
 public:
     struct Node {
         Node* prev;
@@ -18,12 +19,12 @@ public:
 private:
     Node head, tail;
 public:
-    LinkedList();
-    ~LinkedList();
-    LinkedList(const LinkedList<T>& other);
-    LinkedList(LinkedList<T>&& other);
-    LinkedList<T>& operator=(const LinkedList<T>& other);
-    LinkedList<T>& operator=(LinkedList<T>&& other);
+    List();
+    ~List();
+    List(const List<T>& other);
+    List(List<T>&& other);
+    List<T>& operator=(const List<T>& other);
+    List<T>& operator=(List<T>&& other);
 
     T& at(size_t pos);
     const T& at(size_t pos) const;
@@ -53,81 +54,81 @@ public:
 };
 
 template <class T>
-LinkedList<T>::LinkedList() {
+List<T>::List() {
 }
 
 template <class T>
-LinkedList<T>::~LinkedList() {
+List<T>::~List() {
 }
 
 template <class T>
-LinkedList<T>::LinkedList(const LinkedList<T>& other) {
+List<T>::List(const List<T>& other) {
 }
 
 template <class T>
-LinkedList<T>::LinkedList(LinkedList<T>&& other) {
+List<T>::List(List<T>&& other) {
 }
 
 template <class T>
-LinkedList<T>& LinkedList<T>::operator=(const LinkedList<T>& other) {
+List<T>& List<T>::operator=(const List<T>& other) {
 }
 
 template <class T>
-LinkedList<T>& LinkedList<T>::operator=(LinkedList<T>&& other) {
+List<T>& List<T>::operator=(List<T>&& other) {
 }
 
 template <class T>
-T& LinkedList<T>::at(size_t pos) {
+T& List<T>::at(size_t pos) {
 }
 template <class T>
-const T& LinkedList<T>::at(size_t pos) const {
-}
-
-template <class T>
-T& LinkedList<T>::operator[](size_t pos) {
-}
-template <class T>
-const T& LinkedList<T>::operator[](size_t pos) const {
+const T& List<T>::at(size_t pos) const {
 }
 
 template <class T>
-T& LinkedList<T>::front() {
+T& List<T>::operator[](size_t pos) {
 }
 template <class T>
-const T& LinkedList<T>::front() const {
-}
-
-template <class T>
-T& LinkedList<T>::back() {
-}
-template <class T>
-const T& LinkedList<T>::back() const {
+const T& List<T>::operator[](size_t pos) const {
 }
 
 template <class T>
-[[nodiscard]] bool LinkedList<T>::empty() const noexcept {
+T& List<T>::front() {
+}
+template <class T>
+const T& List<T>::front() const {
 }
 
 template <class T>
-[[nodiscard]] size_t LinkedList<T>::size() const noexcept {
+T& List<T>::back() {
+}
+template <class T>
+const T& List<T>::back() const {
 }
 
 template <class T>
-void LinkedList<T>::clear() noexcept {
+[[nodiscard]] bool List<T>::empty() const noexcept {
 }
 
 template <class T>
-void LinkedList<T>::push_back(const T& value) {
+[[nodiscard]] size_t List<T>::size() const noexcept {
 }
 
 template <class T>
-void LinkedList<T>::pop_back() {
+void List<T>::clear() noexcept {
 }
 
 template <class T>
-void LinkedList<T>::push_front(const T& value) {
+void List<T>::push_back(const T& value) {
 }
 
 template <class T>
-void LinkedList<T>::pop_front() {
+void List<T>::pop_back() {
+}
+
+template <class T>
+void List<T>::push_front(const T& value) {
+}
+
+template <class T>
+void List<T>::pop_front() {
 }
