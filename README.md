@@ -42,19 +42,19 @@ Click the below function names to be taken to the reference page for the functio
 Implement the following functions:
 | Function Name | Brief Description | Time Complexity | Test Names |
 | :--- | :--- | :--- | ---: |
-| `front` | access the first element | O(1) | TBD |
-| `back` | access the last element | O(1) | TBD |
-| `begin` | returns an iterator to the beginning | O(1) | TBD |
-| `end` | returns an iterator to the end | O(1) | TBD |
-| `empty` | checks whether the container is empty | O(1) | TBD |
-| `size` | returns the number of elements | O(1) | TBD |
-| `clear` | clears the contents | O(`size()`) | TBD |
-| `insert` | inserts elements | O(1) | TBD |
-| `erase` | erases elements | O(1) | TBD |
-| `push_back` | adds an element to the end | O(1) | TBD |
-| `pop_back` | removes the last element | O(1) | TBD |
-| `push_front` | inserts an element to the beginning | O(1) | TBD |
-| `pop_front` | removes the first element | O(1) | TBD |
+| [`front`](https://en.cppreference.com/w/cpp/container/list/front) | access the first element | O(1) | TBD |
+| [`back`](https://en.cppreference.com/w/cpp/container/list/back) | access the last element | O(1) | TBD |
+| [`begin`](https://en.cppreference.com/w/cpp/container/list/begin) | returns an iterator to the beginning | O(1) | TBD |
+| [`end`](https://en.cppreference.com/w/cpp/container/list/end) | returns an iterator to the end | O(1) | TBD |
+| [`empty`](https://en.cppreference.com/w/cpp/container/list/empty) | checks whether the container is empty | O(1) | TBD |
+| [`size`](https://en.cppreference.com/w/cpp/container/list/size) | returns the number of elements | O(1) | TBD |
+| [`clear`](https://en.cppreference.com/w/cpp/container/list/clear) | clears the contents | O(`size()`) | TBD |
+| [`insert`](https://en.cppreference.com/w/cpp/container/list/insert) | inserts elements | O(1) | TBD |
+| [`erase`](https://en.cppreference.com/w/cpp/container/list/erase) | erases elements | O(1) | TBD |
+| [`push_back`](https://en.cppreference.com/w/cpp/container/list/push_back) | adds an element to the end | O(1) | TBD |
+| [`pop_back`](https://en.cppreference.com/w/cpp/container/list/pop_back) | removes the last element | O(1) | TBD |
+| [`push_front`](https://en.cppreference.com/w/cpp/container/list/push_front) | inserts an element to the beginning | O(1) | TBD |
+| [`pop_front`](https://en.cppreference.com/w/cpp/container/list/pop_front) | removes the first element | O(1) | TBD |
 
 Implement `List::basic_iterator` which will create `iterator` and `const_iterator` for you. Write the following functions, which are **different from those of the Random Access Iterator from `Vector`.** If you reuse that code, it will not work at all because the list iterator is a **Bidirectional Iterator.**
 | Signature | Description | Time Complexity | Test Names |
@@ -63,12 +63,12 @@ Implement `List::basic_iterator` which will create `iterator` and `const_iterato
 | `explicit basic_iterator(Node* ptr) noexcept;` | Parameterized Constructor. Set the managed pointer to the given `Node *`. | O(1) | TBD |
 | `reference operator*() const;` | Dereference the pointer, returning a reference to the value in the managed node. **Do not return a reference to the `Node`, but instead return a reference to its managed data.** | O(1) | TBD |
 | `pointer operator->() const;` | Return a pointer to the data managed by `Node`. | O(1) | TBD |
-| `basic_iterator& operator++();` | Advance the iterator so that the managed `Node` is the next node in the list. | O(1) | TBD |
-| `basic_iterator operator++(int);` |  | O(1) | TBD |
-| `basic_iterator& operator--();` |  | O(1) | TBD |
-| `basic_iterator operator--(int);` |  | O(1) | TBD |
-| `bool operator==(const basic_iterator& other) const noexcept;` |  | O(1) | TBD |
-| `bool operator!=(const basic_iterator& other) const noexcept;` |  | O(1) | TBD |
+| `basic_iterator& operator++();` | **Prefix Increment.** Advance the iterator so that the managed `Node` is the next node in the list. Return a reference to this iterator. | O(1) | TBD |
+| `basic_iterator operator++(int);` | **Postfix Increment.** Advance the iterator so that the managed `Node` is the next node in the list. Return a copy of this iterator from before it was advanced. | O(1) | TBD |
+| `basic_iterator& operator--();` | **Prefix Increment.** Retreat the iterator so that the managed `Node` is the previous node in the list. Return a reference to this iterator. | O(1) | TBD |
+| `basic_iterator operator--(int);` | **Prefix Increment.** Retreat the iterator so that the managed `Node` is the previous node in the list. Return a copy of this iterator from before it was retreated. | O(1) | TBD |
+| `bool operator==(const basic_iterator& other) const noexcept;` | Compare two iterators and determine if they are equivalent. | O(1) | TBD |
+| `bool operator!=(const basic_iterator& other) const noexcept;` | Compare two iterators and determine if they are not equivalent. | O(1) | TBD |
 
 A possible implementation (followed by GCC) is to make:
 ```cpp
@@ -77,7 +77,7 @@ auto begin_it = begin(), end_it = end();
 begin_it == end(); // this is true
 end_it == begin(); // this is true
 ```
-Thus, the end loops back to the beginning and the beginning back to the end. **You do not have to do this, but it is an approach that you can follow to prevent Segfaults from going off the end of the list.** This form of list is very similar to a Circular Linked List.
+Thus, the end loops back to the beginning and the beginning back to the end. **You do not have to do this, but it is an approach that you can follow to prevent Segfaults from going off the end of the list.** This form of `List` is very similar to a Circular Linked List.
 
 #### Further Reading
 - [Geeks For Geeks Doubly Linked List](https://www.geeksforgeeks.org/doubly-linked-list/)
