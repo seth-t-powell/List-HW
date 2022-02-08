@@ -2,7 +2,6 @@
 
 #include <cstddef> // size_t
 #include <iterator> // std::bidirectional_iterator_tag
-#include <list> // std::bidirectional_iterator_tag
 
 template <class T>
 class List {
