@@ -7,14 +7,14 @@ template <class T>
 class List {
     private:
     struct Node {
-        T data;
         Node *next, *prev;
+        T data;
         explicit Node(Node* prev = nullptr, Node* next = nullptr)
-        : data{}, next{next}, prev{prev} {}
+        : next{next}, prev{prev}, data{} {}
         explicit Node(const T& data, Node* prev = nullptr, Node* next = nullptr)
-        : data{data}, next{next}, prev{prev} {}
+        : next{next}, prev{prev}, data{data} {}
         explicit Node(T&& data, Node* prev = nullptr, Node* next = nullptr)
-        : data{std::move(data)}, next{next}, prev{prev} {}
+        : next{next}, prev{prev}, data{std::move(data)} {}
     };
 
     template <typename pointer_type, typename reference_type>
