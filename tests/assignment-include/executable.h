@@ -11,7 +11,7 @@
 // Deterministic type generator
 #include "typegen.h"
 // Include source file
-#include "LinkedList.h"
+#include "List.h"
 // Include custom insertions
 #include "more_assertions.h"
 
