@@ -108,7 +108,7 @@ We provide for you a `struct Card` in [`Cards.h`](./src/Cards.h) and ask that yo
 
 To run the tests, you need to rename [`main.cpp`](./src/main.cpp) or you need to rename the `int main` function within that file.
 
-Execute the following commands from the `sorting-vectors` folder to accomplish what you need:
+Execute the following commands from the `assignment-list` folder to accomplish what you need:
 
 **Build all of the tests**
 ```sh
