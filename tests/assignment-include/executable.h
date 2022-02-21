@@ -14,10 +14,14 @@
 #include "List.h"
 // Include custom insertions
 #include "more_assertions.h"
+// Additional iterator method
+#include "pace.h"
+// Override random generator for testing
+#include "deck.h"
 
 #define TEST(name) UTEST(SORT, name)
 
+size_t constexpr TEST_ITER = 100;
+
 // Setup main file
 UTEST_MAIN()
-
-

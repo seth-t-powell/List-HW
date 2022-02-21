@@ -24,6 +24,8 @@ CXX?=g++
 CFLAGS ?=
 CFLAGS += -std=c++17
 CFLAGS += -Wall -pedantic
+# We test self/move or assignment
+CFLAGS += -Wno-self-assign-overloaded -Wno-self-move
 CFLAGS += $(DEBUG_FLAGS)
 # work in progress
 # CFLAGS += -fsanitize=address
@@ -32,7 +34,7 @@ CFLAGS += -I$(SRC_DIR)
 
 # Add more assignment specific utilities here
 # Although this will break when linking. Only include here if they are universally needed
-ASSIGNMENT_OBJS :=
+ASSIGNMENT_OBJS := deck.o
 
 UTILS_OBJS := memhook.o
 UTILS_OBJS += xoshiro256.o
@@ -42,8 +44,11 @@ UTILS_OBJS += typegen.o
 
 SRC_EXT:=%.cpp %.cc %.cxx
 
-STD_BUILD=$(CXX) $(CFLAGS) $(EXTRA_CXXFLAGS) $(filter $(SRC_EXT) %.o, $^) -o $@
-STD_COMPILE=$(STD_BUILD) -c
+LDFLAGS :=
+
+_STD_BUILD=$(CXX) $(CFLAGS) $(EXTRA_CXXFLAGS) $(filter $(SRC_EXT) %.o, $^) -o $@
+STD_BUILD=$(_STD_BUILD) $(LDFLAGS)
+STD_COMPILE=$(_STD_BUILD) -c
 
 ## UTILS ##
 
@@ -71,13 +76,13 @@ ASSIGNMENT_OBJS := $(patsubst %, $(ASSIGNMENT_UTILS_DIR)/%, $(ASSIGNMENT_OBJS))
 
 ## BUILD ##
 
-OBJECTS := $(UTILS_OBJS)
+OBJECTS := $(SRC_OBJS)
+OBJECTS += $(UTILS_OBJS)
 OBJECTS += $(ASSIGNMENT_OBJS)
-OBJECTS += $(SRC_OBJS)
 
-HEADERS := $(INCLUDE_HEADERS)
+HEADERS := $(SRC_HEADERS)
+HEADERS += $(INCLUDE_HEADERS)
 HEADERS += $(ASSIGNMENT_INCLUDE_HEADERS)
-HEADERS += $(SRC_HEADERS)
 
 build-all all: $(EXES)
 
