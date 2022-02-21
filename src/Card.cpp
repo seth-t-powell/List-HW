@@ -21,7 +21,7 @@ int rand221(void) {
 //    
 // }
 
-List<Card> buildDeck(std::ifstream& file) {
+List<Card> buildDeck(std::istream& file) {
     // TODO
 }
 

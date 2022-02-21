@@ -18,7 +18,7 @@ struct Card {
     Rank rank;
 };
 
-List<Card> buildDeck(std::ifstream& file);
+List<Card> buildDeck(std::istream& file);
 
 List<Card> shuffle(const List<Card>& deck);
 

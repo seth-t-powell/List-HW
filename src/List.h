@@ -36,7 +36,7 @@ class List {
         explicit basic_iterator(const Node* ptr) noexcept : node{const_cast<Node*>(ptr)} {}
 
     public:
-        basic_iterator() = default;
+        basic_iterator() { /* TODO */ };
         basic_iterator(const basic_iterator&) = default;
         basic_iterator(basic_iterator&&) = default;
         ~basic_iterator() = default;
