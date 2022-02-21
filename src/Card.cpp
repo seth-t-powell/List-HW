@@ -3,6 +3,10 @@
 
 #include "Card.h"
 
+int rand221(void) {
+    return rand();
+}
+
 // You may want to write the following three functions, but they are not required
 
 // std::istream& operator>>(std::istream& in, Suit& suit) {
