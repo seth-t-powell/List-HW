@@ -34,10 +34,10 @@ TEST(pop_back) {
                     auto gt_it = gt_ll.begin();
                     auto it = ll.begin();
                     while(gt_it != gt_ll.end())
-                        ASSERT_EQ(*gt_it++, *it++);
+                        ASSERT_EQ_(*gt_it++, *it++, "An inconsistancy was found when iterating forward");
                     
                     while(gt_it != gt_ll.begin())
-                        ASSERT_EQ(*--gt_it, *--it);
+                        ASSERT_EQ_(*--gt_it, *--it,  "An inconsistancy was found when iterating backward");
                 }
             }
 

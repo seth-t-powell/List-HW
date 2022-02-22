@@ -6,8 +6,6 @@ TEST(operator_copy_consistency) {
     Typegen t;
 
     for(size_t i = 0; i < TEST_ITER; i++) {
-        Memhook mh_mem_loss;
-
         {
             const size_t n = t.range(0x3FFULL);
             const size_t prev_n = t.range(0x3FFULL);
@@ -37,10 +35,10 @@ TEST(operator_copy_consistency) {
                 auto gt_it = gt_ll.cbegin();
 
                 while(gt_it != gt_ll.cend())
-                    ASSERT_EQ(*gt_it++, *it++);
+                    ASSERT_EQ_(*gt_it++, *it++, "An inconsistancy was found when iterating forward");
                 
                 while(gt_it != gt_ll.cbegin())
-                    ASSERT_EQ(*--gt_it, *--it);    
+                    ASSERT_EQ_(*--gt_it, *--it, "An inconsistancy was found when iterating backward");    
             }
             
             // insert and remove from list to ensure consistancy
@@ -81,20 +79,17 @@ TEST(operator_copy_consistency) {
                     {
                         ASSERT_EQ(gt_ll.size(), ll_cpy.size());
 
-                        auto gt_it = gt_ll.cbegin();
                         auto it = ll_cpy.cbegin();
-                        
-                        while(gt_it != gt_ll.cend())
-                            ASSERT_EQ(*gt_it++, *it++);
+                        auto gt_it = gt_ll.cbegin();
 
+                        while(gt_it != gt_ll.cend())
+                            ASSERT_EQ_(*gt_it++, *it++, "An inconsistancy was found when iterating forward");
+                        
                         while(gt_it != gt_ll.cbegin())
-                            ASSERT_EQ(*--gt_it, *--it);
+                            ASSERT_EQ_(*--gt_it, *--it, "An inconsistancy was found when iterating backward");    
                     }
                 }
             }
         }
-    
-        // No memory should be lost
-        ASSERT_EQ(mh_mem_loss.n_frees(), mh_mem_loss.n_allocs());
     }
 }

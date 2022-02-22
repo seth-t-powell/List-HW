@@ -61,10 +61,10 @@ TEST(push_back) {
             auto it = ll->cbegin();
             size_t j = 0;
             for(; it != ll->cend(); it++)
-                ASSERT_EQ(gt[j++], **it);
+                ASSERT_EQ_(gt[j++], **it,  "An inconsistancy was found when iterating forward");
 
             while(it != ll->cbegin())
-                ASSERT_EQ(gt[--j], **(--it));
+                ASSERT_EQ_(gt[--j], **(--it), "An inconsistancy was found when iterating backward");
 
             delete ll;
 

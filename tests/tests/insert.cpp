@@ -10,10 +10,10 @@ TEST(insert) {
 
     for(size_t i = 0; i < TEST_ITER; i++) {
         const size_t n = t.range(0x999ULL);
-        Memhook mh_mem_loss;
 
         {
             List<int> * ll = new List<int>();
+       
             std::list<int> gt_ll;
 
             bool gt_walk_reversed = false,
@@ -22,14 +22,20 @@ TEST(insert) {
             auto gt_pos = gt_ll.cbegin();
             auto pos = ll->cbegin();
 
-            for(size_t i = 0; i < n; i++) {
+            for(size_t i = 0; i < 5; i++) {
                 size_t steps = t.range(gt_ll.size() + 1);
                 int value = t.get<int>();
 
                 pos = pace(*ll, pos, steps, walk_reversed);
                 gt_pos = pace(gt_ll, gt_pos, steps, gt_walk_reversed);
 
-                auto it_val = ll->insert(pos, value);
+                typename List<int>::iterator it_val;
+                {
+                    Memhook mh;
+                    it_val = ll->insert(pos, value);
+                    ASSERT_EQ(1ULL, mh.n_allocs());
+                }
+
                 gt_ll.insert(gt_pos, value);
 
                 // return value should point to item
@@ -43,10 +49,10 @@ TEST(insert) {
                     auto it = ll->cbegin();
                     
                     while(gt_it != gt_ll.cend())
-                        ASSERT_EQ(*gt_it++, *it++);
+                        ASSERT_EQ_(*gt_it++, *it++, "An inconsistancy was found when iterating forward");
 
                     while(gt_it != gt_ll.cbegin())
-                        ASSERT_EQ(*--gt_it, *--it);
+                        ASSERT_EQ_(*--gt_it, *--it,  "An inconsistancy was found when iterating backward");
                 }
             }
 
@@ -76,9 +82,6 @@ TEST(insert) {
                 ASSERT_EQ(1ULL, mh.n_allocs());
             }
         }
-        
-        // No memory should be lost
-        ASSERT_EQ(mh_mem_loss.n_frees(), mh_mem_loss.n_allocs());
     }
     
 }

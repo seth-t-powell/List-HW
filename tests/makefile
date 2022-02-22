@@ -39,6 +39,7 @@ ASSIGNMENT_OBJS := deck.o
 UTILS_OBJS := memhook.o
 UTILS_OBJS += xoshiro256.o
 UTILS_OBJS += typegen.o
+UTILS_OBJS += assertions.o
 
 ##########################################################################################
 

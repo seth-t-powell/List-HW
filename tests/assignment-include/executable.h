@@ -6,14 +6,14 @@
 
 // Include utilities from utest
 #include "utest.h"
+// Include custom insertions
+#include "assertions.h"
 // Track memory allocations
 #include "memhook.h"
 // Deterministic type generator
 #include "typegen.h"
 // Include source file
 #include "List.h"
-// Include custom insertions
-#include "more_assertions.h"
 // Additional iterator method
 #include "pace.h"
 // Override random generator for testing

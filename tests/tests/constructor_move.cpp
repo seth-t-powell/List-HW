@@ -6,8 +6,6 @@ TEST(constructor_move) {
     Typegen t;
 
     for(size_t i = 0; i < TEST_ITER; i++) {
-        Memhook mh_mem_loss;
-
         {
             const size_t n = i == 0 ? 0 : t.range(0x999ULL);
             List<int> ll(n);
@@ -17,10 +15,17 @@ TEST(constructor_move) {
             std::copy(gt_ll.cbegin(), gt_ll.cend(), ll.begin());
 
             Memhook mh;
-            List<int> ll_cpy = std::move(ll);
+            List<int> ll_cpy { std::move(ll) };
             
+            // List object should be in an "empty" state
+            #ifndef ALT_LIST_VALID_MOVE_STATE
+            // These checks will run by default.
+            // Technically, the object only needs to be in a valid state.
+            // If you come up with an alternative imp, you may disable this
+            // check
             ASSERT_EQ(0ULL, ll.size());
             ASSERT_TRUE(ll.begin() == ll.end());
+            #endif
             
             // Ensure pointers are wired correctly
             // Should handle empty case & stack nodes properly
@@ -38,13 +43,10 @@ TEST(constructor_move) {
             auto gt_it = gt_ll.cbegin();
 
             while(gt_it != gt_ll.cend())
-                ASSERT_EQ(*gt_it++, *it++);
+                ASSERT_EQ_(*gt_it++, *it++, "An inconsistancy was found when iterating forward");
             
             while(gt_it != gt_ll.cbegin())
-                ASSERT_EQ(*--gt_it, *--it);
+                ASSERT_EQ_(*--gt_it, *--it, "An inconsistancy was found when iterating backward");
         }
-
-        // No memory should be lost
-        ASSERT_EQ(mh_mem_loss.n_frees(), mh_mem_loss.n_allocs());
     }
 }
