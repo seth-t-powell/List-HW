@@ -141,7 +141,7 @@
                 "make -C tests SRC_DIR=../../submission -j12 run/pop_back"
             ],
             "points": 4,
-            "time_limit": 25000,
+            "time_limit": 35000,
             "long_name": "Test 15 - pop_back"
         },
         {
@@ -159,7 +159,7 @@
                 "make -C tests SRC_DIR=../../submission -j12 run/pop_front"
             ],
             "points": 4,
-            "time_limit": 25000,
+            "time_limit": 35000,
             "long_name": "Test 17 - pop_front"
         },
         {
