@@ -49,10 +49,10 @@ TEST(insert) {
                     auto it = ll->cbegin();
                     
                     while(gt_it != gt_ll.cend())
-                        ASSERT_EQ_(*gt_it++, *it++, "An inconsistancy was found when iterating forward");
+                        ASSERT_EQ_(*gt_it++, *it++, "An inconsistency was found when iterating forward");
 
                     while(gt_it != gt_ll.cbegin())
-                        ASSERT_EQ_(*--gt_it, *--it,  "An inconsistancy was found when iterating backward");
+                        ASSERT_EQ_(*--gt_it, *--it,  "An inconsistency was found when iterating backward");
                 }
             }
 

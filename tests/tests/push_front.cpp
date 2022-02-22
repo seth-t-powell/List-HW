@@ -28,10 +28,10 @@ TEST(push_front) {
             auto it = ll->cend();
             size_t j = 0;
             while(it != ll->cbegin())
-                ASSERT_EQ_(gt[j++], (*--it), "An inconsistancy was found when iterating forward");
+                ASSERT_EQ_(gt[j++], (*--it), "An inconsistency was found when iterating forward");
 
             while(it != ll->cend())
-                ASSERT_EQ_(gt[--j], (*it++), "An inconsistancy was found when iterating backward");
+                ASSERT_EQ_(gt[--j], (*it++), "An inconsistency was found when iterating backward");
 
             delete ll;
 
@@ -61,10 +61,10 @@ TEST(push_front) {
             auto it = ll->cend();
             size_t j = 0;
             while(it != ll->cbegin())
-                ASSERT_EQ_(gt[j++], **--it, "An inconsistancy was found when iterating forward");
+                ASSERT_EQ_(gt[j++], **--it, "An inconsistency was found when iterating forward");
 
             while(it != ll->cend())
-                ASSERT_EQ_(gt[--j], **it++, "An inconsistancy was found when iterating backward");
+                ASSERT_EQ_(gt[--j], **it++, "An inconsistency was found when iterating backward");
             
             delete ll;
 

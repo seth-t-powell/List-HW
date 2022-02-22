@@ -48,10 +48,10 @@ TEST(erase) {
                     auto it = ll.begin();
                     
                     while(gt_it != gt_ll.end())
-                        ASSERT_EQ_(*gt_it++, *it++, "An inconsistancy was found when iterating forward");
+                        ASSERT_EQ_(*gt_it++, *it++, "An inconsistency was found when iterating forward");
                     
                     while(gt_it != gt_ll.end())
-                        ASSERT_EQ_(*--gt_it, *--it, "An inconsistancy was found when iterating backward");
+                        ASSERT_EQ_(*--gt_it, *--it, "An inconsistency was found when iterating backward");
                 }
             }
 

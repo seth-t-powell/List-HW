@@ -6,7 +6,6 @@ TEST(operator_copy_consistency) {
     Typegen t;
 
     for(size_t i = 0; i < TEST_ITER; i++) {
-        {
             const size_t n = t.range(0x3FFULL);
             const size_t prev_n = t.range(0x3FFULL);
 
@@ -35,10 +34,10 @@ TEST(operator_copy_consistency) {
                 auto gt_it = gt_ll.cbegin();
 
                 while(gt_it != gt_ll.cend())
-                    ASSERT_EQ_(*gt_it++, *it++, "An inconsistancy was found when iterating forward");
+                    ASSERT_EQ_(*gt_it++, *it++, "An inconsistency was found when iterating forward");
                 
                 while(gt_it != gt_ll.cbegin())
-                    ASSERT_EQ_(*--gt_it, *--it, "An inconsistancy was found when iterating backward");    
+                    ASSERT_EQ_(*--gt_it, *--it, "An inconsistency was found when iterating backward");    
             }
             
             // insert and remove from list to ensure consistancy
@@ -83,10 +82,10 @@ TEST(operator_copy_consistency) {
                         auto gt_it = gt_ll.cbegin();
 
                         while(gt_it != gt_ll.cend())
-                            ASSERT_EQ_(*gt_it++, *it++, "An inconsistancy was found when iterating forward");
+                            ASSERT_EQ_(*gt_it++, *it++, "An inconsistency was found when iterating forward");
                         
                         while(gt_it != gt_ll.cbegin())
-                            ASSERT_EQ_(*--gt_it, *--it, "An inconsistancy was found when iterating backward");    
+                            ASSERT_EQ_(*--gt_it, *--it, "An inconsistency was found when iterating backward");    
                     }
                 }
             }
