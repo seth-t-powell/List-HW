@@ -67,8 +67,8 @@ Implement `List::basic_iterator` which will create `iterator` and `const_iterato
 | `pointer operator->() const;` | Return a pointer to the data managed by `Node`. | O(1) | `iterator` |
 | `basic_iterator& operator++();` | **Prefix Increment.** Advance the iterator so that the managed `Node` is the next node in the list. Return a reference to this iterator. | O(1) | `iterator` & Frequently Utilized |
 | `basic_iterator operator++(int);` | **Postfix Increment.** Advance the iterator so that the managed `Node` is the next node in the list. Return a copy of this iterator from before it was advanced. | O(1) | `iterator` & Frequently Utilized |
-| `basic_iterator& operator--();` | **Prefix Increment.** Retreat the iterator so that the managed `Node` is the previous node in the list. Return a reference to this iterator. | O(1) | `iterator` & Frequently Utilized |
-| `basic_iterator operator--(int);` | **Prefix Increment.** Retreat the iterator so that the managed `Node` is the previous node in the list. Return a copy of this iterator from before it was retreated. | O(1) | `iterator` & Frequently Utilized |
+| `basic_iterator& operator--();` | **Prefix Decrement.** Retreat the iterator so that the managed `Node` is the previous node in the list. Return a reference to this iterator. | O(1) | `iterator` & Frequently Utilized |
+| `basic_iterator operator--(int);` | **Postfix Decrement.** Retreat the iterator so that the managed `Node` is the previous node in the list. Return a copy of this iterator from before it was retreated. | O(1) | `iterator` & Frequently Utilized |
 | `bool operator==(const basic_iterator& other) const noexcept;` | Compare two iterators and determine if they are equivalent. | O(1) | `iterator` & Frequently Utilized |
 | `bool operator!=(const basic_iterator& other) const noexcept;` | Compare two iterators and determine if they are not equivalent. | O(1) | `iterator` & Frequently Utilized |
 
