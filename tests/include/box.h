@@ -26,8 +26,7 @@ class Box {
     ~Box() { delete _ptr; }
     Box(T const & obj) : _ptr {new T} { *_ptr = obj;} 
     Box(T && obj) : _ptr {new T} { *_ptr = std::move(obj); }
-    Box(T * ptr) : _ptr {ptr} {}
-    Box(std::nullptr_t ptr) : _ptr {ptr} {}
+    explicit Box(T * ptr) : _ptr {ptr} {}
     Box(Box<T> const & other) : _ptr{nullptr} {
         if(other._ptr) {
             _ptr = new T;
