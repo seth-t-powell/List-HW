@@ -92,19 +92,19 @@ private:
 
 public:
     List() {
-        // TODO - Don't forget the list initialier
+        // TODO - Don't forget the list initializer
     }
     List( size_type count, const T& value ) {
-        // TODO - Don't forget the list initialier
+        // TODO - Don't forget the list initializer
     }
     explicit List( size_type count ) {
-        // TODO - Don't forget the list initialier
+        // TODO - Don't forget the list initializer
     }
     List( const List& other ) {
-        // TODO - Don't forget the list initialier
+        // TODO - Don't forget the list initializer
     }
     List( List&& other ) {
-        // TODO - Don't forget the list initialier
+        // TODO - Don't forget the list initializer
     }
     ~List() {
         // TODO
