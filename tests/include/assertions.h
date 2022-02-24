@@ -78,10 +78,11 @@ void tdbg_clear_output(const char * file, unsigned int line);
 #undef ASSERT_TRUE
 #define ASSERT_TRUE(x)                                                         \
   UTEST_SURPRESS_WARNING_BEGIN do {                                            \
-    if (!(x)) {                                                                \
+    bool xEval = (!(x) == 0);                                                \
+    if (!(xEval)) {                                       \
       UTEST_PRINTF("%s:%u: Failure\n", __FILE__, __LINE__);                    \
       UTEST_PRINTF("  Expected : true\n");                                     \
-      UTEST_PRINTF("    Actual : %s\n", (x) ? "true" : "false");               \
+      UTEST_PRINTF("    Actual : %s\n", (xEval) ? "true" : "false");               \
       tdbg_report_failure(__FILE__, __LINE__);                                                   \
       *utest_result = 1;                                                       \
       return;                                                                  \
@@ -101,10 +102,11 @@ void tdbg_clear_output(const char * file, unsigned int line);
 #undef ASSERT_FALSE
 #define ASSERT_FALSE(x)                                                        \
   UTEST_SURPRESS_WARNING_BEGIN do {                                            \
-    if (x) {                                                                   \
+    bool xEval = (!(x) == 0);                                                \
+    if (xEval) {                                                                   \
       UTEST_PRINTF("%s:%u: Failure\n", __FILE__, __LINE__);                    \
       UTEST_PRINTF("  Expected : false\n");                                    \
-      UTEST_PRINTF("    Actual : %s\n", (x) ? "true" : "false");               \
+      UTEST_PRINTF("    Actual : %s\n", (xEval) ? "true" : "false");               \
       tdbg_report_failure(__FILE__, __LINE__);                                                   \
       *utest_result = 1;                                                       \
       return;                                                                  \
