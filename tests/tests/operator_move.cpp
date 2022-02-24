@@ -34,8 +34,8 @@ TEST(operator_move) {
 
             // Ensure pointers are wired correctly
             // Should handle empty case & stack nodes properly
-            ASSERT_FALSE(--(++ll.begin()) == ll_cpy.begin());
             ASSERT_FALSE(++(--ll.end()) == ll_cpy.end());
+            ASSERT_FALSE(++(--ll.end()) == ll_cpy.begin());
             ASSERT_FALSE(ll.end() == ll_cpy.begin());
 
             ASSERT_EQ(gt_ll.size(), ll_cpy.size());
