@@ -51,7 +51,7 @@
                 "make -C tests SRC_DIR=../../submission -j12 run/constructor_copy"
             ],
             "points": 4,
-            "time_limit": 5000,
+            "time_limit": 10000,
             "long_name": "Test 5 - constructor_copy"
         },
         {
