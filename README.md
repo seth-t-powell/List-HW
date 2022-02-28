@@ -34,7 +34,7 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 | `List( const List& other );` | **Copy constructor.** Constructs the container with the copy of the contents of `other`.          | O(`other.size()`) | `constructor_copy` |
 | `List( List&& other );` | **Move constructor.** Constructs the container with the contents of `other` using move semantics. | O(1) | `constructor_move` |
 | `~List();` | **Destructs the List.** The destructors of the elements are called and the used storage is deallocated. Note, that if the elements are pointers, the pointed-to objects are not destroyed. | O(`size()`) | Frequently Utilized |
-| `List& operator=( const List& other );` | **Copy assignment operator.** Replaces the contents with a copy of the contents of `other`.  | O(max(`size()`, `other.size()`)) | `constructor_copy` |
+| `List& operator=( const List& other );` | **Copy assignment operator.** Replaces the contents with a copy of the contents of `other`.  | O(max(`size()`, `other.size()`)) | `operator_copy` |
 | `List& operator=( List&& other ) noexcept;` | **Move assignment operator.** Replaces the contents with those of `other` using move semantics (i.e. the data in `other` is moved from `other` into this container). `other` is in a valid but unspecified state afterwards.  | O(`size()`) | `operator_move` |
 
 Click the below function names to be taken to the reference page for the function.
