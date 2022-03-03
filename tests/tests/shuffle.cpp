@@ -39,7 +39,7 @@ TEST(shuffle) {
         size_t i = 0;
 
         size_t constexpr CARDS_IN_SUITE = 13;
-        Rank constexpr RANK_START = 1;
+        Rank constexpr RANK_START = ACE;
         while(it != unshuffled.cend()) {
             ASSERT_TRUE(it->suit == static_cast<Suit>(i / CARDS_IN_SUITE));
             ASSERT_TRUE(it->rank == static_cast<Rank>(i % CARDS_IN_SUITE + RANK_START));

@@ -14,7 +14,7 @@ TEST(build_deck) {
         size_t i = 0;
 
         size_t constexpr CARDS_IN_SUIT = 13;
-        Rank constexpr RANK_START = 1;
+        Rank constexpr RANK_START = ACE;
         while(it != deck.cend()) {
             ASSERT_TRUE(it->suit == static_cast<Suit>(i / CARDS_IN_SUIT));
             ASSERT_TRUE(it->rank == static_cast<Rank>(i % CARDS_IN_SUIT + RANK_START));
