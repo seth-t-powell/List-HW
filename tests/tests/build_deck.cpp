@@ -33,8 +33,8 @@ TEST(build_deck) {
         auto it = deck.cbegin();
         size_t i = 0;
 
-        size_t constexpr CARDS_IN_SUIT = 3;
-        Rank constexpr RANK_START = 11;
+        size_t constexpr CARDS_IN_SUIT = 4;
+        Rank constexpr RANK_START = JACK;
         while(it != deck.cend()) {
             ASSERT_TRUE(it->suit == static_cast<Suit>(i / CARDS_IN_SUIT));
             ASSERT_TRUE(it->rank == static_cast<Rank>(i % CARDS_IN_SUIT + RANK_START));
