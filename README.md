@@ -91,7 +91,7 @@ Thus, the end loops back to the beginning and the beginning back to the end. **Y
 A standard playing card has two main pieces of information:
 1. It has a Suit (Spades, Diamonds, Clubs, or Hearts)
 2. It has a Number (2 - 10 inclusive) or a Face (Ace, Jack, Queen, King)
-   - In many games the order is: Ace, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, Jack, Queen, and King
+   - In many games the order is: Ace, 2, 3, 4, 5, 6, 7, 8, 9, 10, Jack, Queen, and King
 
 We provide for you a `struct Card` in [`Cards.h`](./src/Cards.h) and ask that you implement the following two functions in [`Cards.cpp`](./src/Cards.cpp):
 | Signature | Description | Time Complexity | Test Names |
