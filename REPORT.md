@@ -115,7 +115,7 @@ The goal of this question is to get you thinking about alternate implementations
 Question 9
 ----------
 
-During the report for `assignment-vector` you were provided an example of iterator invalidation. That is when using `Vector`, an `Vector` iterator would point to invalid memory if an operation was preformed to reallocate the underlying array. Now consider your implementation of `List`. Which of the following `List` methods can result in iterator invalidation? For each method that can result in iterator invalidation, describe the conditions in which this occurs?
+During the report for `assignment-vector` you were provided an example of iterator invalidation. That is when using `Vector`, an `Vector` iterator would point to invalid memory if an operation was performed to reallocate the underlying array. Now consider your implementation of `List`. Which of the following `List` methods can result in iterator invalidation? For each method that can result in iterator invalidation, describe the conditions under which this occurs.
 
 - `push_back`
 - `erase`
