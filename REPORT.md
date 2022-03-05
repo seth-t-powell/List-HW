@@ -14,9 +14,9 @@ Consider the following code snippet:
 
 ```c++
 void f1() {
-    List<int> dll;
-    dll.push_front(20);
-    dll.push_back(30);
+    List<int> ll;
+    ll.push_front(20);
+    ll.push_back(30);
 }
 ```
 
@@ -25,7 +25,7 @@ Four nodes are created by the `List` class. (1) Briefly describe the purpose of 
 Question 2
 ----------
 
-Consider the following code snippet, which implements the `DLList` destructor:
+Consider the following code snippet, which implements the `List` destructor:
 
 ```c++
 template <class T>
@@ -59,23 +59,23 @@ A student implements the following move constructor:
 
 ```c++
 template <class T>
-List<T>::List(List && dll) : head{}, tail{}, _size{0} {
-    _size = dll._size;
-    dll._size = 0;
-    if(!dll.empty()) {
-        head.next = dll.head.next;
-        tail.prev = dll.tail.prev;
+List<T>::List(List && ll) : head{}, tail{}, _size{0} {
+    _size = ll._size;
+    if(!ll.empty()) {
+        head.next = ll.head.next;
+        tail.prev = ll.tail.prev;
 
-        dll.head.next = &dll.tail;
-        dll.tail.prev = &dll.head;
+        ll.head.next = &ll.tail;
+        ll.tail.prev = &ll.head;
     } else {
         head.next = &tail;
         tail.prev = &head;
     }
+    ll._size = 0;
 }
 ```
 
-The code contains an error. What is the source of this error? What effect would it have?
+The code contains an error. What is the source of this error? Provide a sequence of iterator operations which demonstrate the incorrect behavior.
 
 Question 5
 ----------
@@ -111,3 +111,15 @@ Name at least three functions (or constructors) that call (directly or indirectl
 Name at least two functions that call (directly or indirectly) the `erase` function (or its derivatives, i.e. `pop_back`). If you do not have two such functions in your code, name two functions that you could have implemented in such a manner. Describe an alternate implementation where if you used `erase` (or a derivative of `erase`, e.g. `pop_back`), you do not use it and vice-versa.
 
 The goal of this question is to get you thinking about alternate implementations for the functions in your program.
+
+Question 9
+----------
+
+During the report for `assignment-vector` you were provided an example of iterator invalidation. That is when using `Vector`, an `Vector` iterator would point to invalid memory if an operation was performed to reallocate the underlying array. Now consider your implementation of `List`. Which of the following `List` methods *can* result in iterator invalidation? For each method that can result in iterator invalidation, describe the *conditions under which this occurs*.
+
+- `push_back`
+- `erase`
+- `insert`
+- `clear`
+- `List& operator=( const List& other );`
+- `List& operator=( List&& other ) noexcept;`
