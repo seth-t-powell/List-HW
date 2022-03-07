@@ -5,7 +5,7 @@ For the list report, you will be asked three questions to test your conceptual u
 
 The oral reports will be scored as "exemplary" (5 points), "mostly sufficient," "incomplete," or "insufficient" (0 points). The point value for "mostly sufficient" and "incomplete" will depend on the difficulty of the question. The points will be awarded in the programming assignment category.
 
-Questions seven and five require you to present your code. Finally, question eight require you to prepare results from running the `main.cpp`.
+Questions seven and five require you to present your code.
 
 Question 1
 ----------
