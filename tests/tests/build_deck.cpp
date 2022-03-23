@@ -4,7 +4,7 @@
 
 TEST(build_deck) {
     Typegen t;
-    size_t constexpr N_SUITES = 4;
+    size_t constexpr N_SUITS = 4;
 
     {
         std::stringstream ss(FULL_DECK);
@@ -13,17 +13,17 @@ TEST(build_deck) {
         auto it = deck.cbegin();
         size_t i = 0;
 
-        size_t constexpr CARDS_IN_SUITE = 13;
-        Rank constexpr RANK_START = 1;
+        size_t constexpr CARDS_IN_SUIT = 13;
+        Rank constexpr RANK_START = ACE;
         while(it != deck.cend()) {
-            ASSERT_TRUE(it->suit == static_cast<Suit>(i / CARDS_IN_SUITE));
-            ASSERT_TRUE(it->rank == static_cast<Rank>(i % CARDS_IN_SUITE + RANK_START));
+            ASSERT_TRUE(it->suit == static_cast<Suit>(i / CARDS_IN_SUIT));
+            ASSERT_TRUE(it->rank == static_cast<Rank>(i % CARDS_IN_SUIT + RANK_START));
 
             it++;
             i++;
         }
 
-        ASSERT_EQ(CARDS_IN_SUITE * N_SUITES, i);
+        ASSERT_EQ(CARDS_IN_SUIT * N_SUITS, i);
     }
 
     {
@@ -33,17 +33,17 @@ TEST(build_deck) {
         auto it = deck.cbegin();
         size_t i = 0;
 
-        size_t constexpr CARDS_IN_SUITE = 3;
-        Rank constexpr RANK_START = 11;
+        size_t constexpr CARDS_IN_SUIT = 4;
+        Rank constexpr RANK_START = JACK;
         while(it != deck.cend()) {
-            ASSERT_TRUE(it->suit == static_cast<Suit>(i / CARDS_IN_SUITE));
-            ASSERT_TRUE(it->rank == static_cast<Rank>(i % CARDS_IN_SUITE + RANK_START));
+            ASSERT_TRUE(it->suit == static_cast<Suit>(i / CARDS_IN_SUIT));
+            ASSERT_TRUE(it->rank == static_cast<Rank>(i % CARDS_IN_SUIT + RANK_START));
 
             it++;
             i++;
         }
 
-        ASSERT_EQ(CARDS_IN_SUITE * N_SUITES, i);
+        ASSERT_EQ(CARDS_IN_SUIT * N_SUITS, i);
     }
 
 }

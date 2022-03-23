@@ -24,7 +24,7 @@ List<Card> shuffle(const List<Card>& deck);
 
 /*
     Use the "rand221" function to generate random numbers 
-    for your shuffling algorithm. It is effectivly the same as 
+    for your shuffling algorithm. It is effectively the same as 
     the C function "rand" but allows us to test 
     the correctness of your shuffle method.
 
