@@ -1,6 +1,5 @@
 #include <string>
 #include <sstream>
-
 #include "Card.h"
 
 int rand221(void) {

@@ -60,15 +60,19 @@ constexpr char const * FULL_DECK = (
 );
 
 constexpr char const * FACE_CARDS_DECK = (
+    "spades ace\n"
     "spades jack\n"
     "spades queen\n"
     "spades king\n"
+    "diamonds ace\n"
     "diamonds jack\n"
     "diamonds queen\n"
     "diamonds king\n"
+    "clubs ace\n"
     "clubs jack\n"
     "clubs queen\n"
     "clubs king\n"
+    "hearts ace\n"
     "hearts jack\n"
     "hearts queen\n"
     "hearts king\n"
