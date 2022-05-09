@@ -12,7 +12,7 @@ The difficulty of the assignment is very close to that of the `Vector` assignmen
 ## Getting started
 Download this code by running the following command in the directory of your choice:
 ```sh
-git clone https://github.tamu.edu/csce221/assignment-list-spring2022.git && cd assignment-list-spring2022
+git clone https://github.tamu.edu/csce221/assignment-list.git && cd assignment-list
 ```
 [OPTIONAL] Then set up CMake (if your editor does not do this for you):
 ```sh
