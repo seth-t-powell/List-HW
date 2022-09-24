@@ -26,6 +26,7 @@ TEST(clear_and_empty) {
         ASSERT_EQ(mh.n_allocs() - 1, mh.n_frees());
         ASSERT_EQ(0ULL, ll->size());
         ASSERT_TRUE(ll->empty());
+        ASSERT_TRUE(ll->begin() == ll->end()); // Checks if head points to tail.
 
         delete ll;
     }
