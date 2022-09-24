@@ -6,6 +6,7 @@ extern std::ostringstream tdbg;
 
 void tdbg_report_failure(const char * file, unsigned int line);
 void tdbg_clear_output(const char * file, unsigned int line);
+bool tdbg_empty();
 
 #undef UTEST_ASSERT
 
@@ -170,3 +171,17 @@ void tdbg_clear_output(const char * file, unsigned int line);
     (tdbg << (s));          \
     ASSERT_GE(x, y);        \
   } while(0)
+
+#define MK_ASSERT(function, ...)                             \
+  UTEST_SURPRESS_WARNING_BEGIN do {                          \
+    function(tdbg, __VA_ARGS__);                             \
+    if(!tdbg_empty()) {                                      \
+      UTEST_PRINTF("%s:%u: Failure\n", __FILE__, __LINE__);  \
+      tdbg_report_failure(__FILE__, __LINE__);               \
+      *utest_result = 1;                                     \
+      return;                                                \
+    } else {                                                 \
+      tdbg_clear_output(__FILE__, __LINE__);                 \
+    }                                                        \
+  } while (0)                                                \
+  UTEST_SURPRESS_WARNING_END
