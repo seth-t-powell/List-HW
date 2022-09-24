@@ -14,10 +14,6 @@ Download this code by running the following command in the directory of your cho
 ```sh
 git clone https://github.tamu.edu/csce221/assignment-list.git && cd assignment-list
 ```
-[OPTIONAL] Then set up CMake (if your editor does not do this for you):
-```sh
-cmake -S . -B build
-```
 Open the code in your editor of choice. For instance, if you use VS Code:
 ```sh
 code .
