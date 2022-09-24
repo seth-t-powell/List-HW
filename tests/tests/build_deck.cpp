@@ -41,7 +41,7 @@ TEST(build_deck) {
             if (it->rank != static_cast<Rank>(1)) {
                 ASSERT_TRUE(it->rank == static_cast<Rank>(i % CARDS_IN_SUIT + RANK_START - 1));
             } else {
-                ASSERT_TRUE(it->rank == static_cast<Rank>(i % CARDS_IN_SUIT - 1));
+                ASSERT_TRUE(it->rank == static_cast<Rank>(i % CARDS_IN_SUIT + 1));
             }
 
             it++;
