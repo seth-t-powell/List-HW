@@ -63,7 +63,12 @@ TEST(shuffle) {
         Rank constexpr RANK_START = JACK;
         while(it != unshuffled.cend()) {
             ASSERT_TRUE(it->suit == static_cast<Suit>(i / CARDS_IN_SUIT));
-            ASSERT_TRUE(it->rank == static_cast<Rank>(i % CARDS_IN_SUIT + RANK_START));
+
+            if (it->rank != static_cast<Rank>(1)) {
+                ASSERT_TRUE(it->rank == static_cast<Rank>(i % CARDS_IN_SUIT + RANK_START - 1));
+            } else {
+                ASSERT_TRUE(it->rank == static_cast<Rank>(i % CARDS_IN_SUIT + 1));
+            }
 
             it++;
             i++;
