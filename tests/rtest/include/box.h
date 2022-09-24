@@ -1,6 +1,7 @@
 #pragma once
 
 #include <utility>
+#include <ostream>
 
 /*
     This is a dumb container for a pointer
@@ -66,4 +67,37 @@ class Box {
     T * operator->() { return _ptr; }
     T const * operator->() const noexcept { return _ptr; }
     operator bool() { return _ptr != nullptr; }
+
+    bool operator !=(Box<T> const & other) const { return *_ptr != *other; }
+    bool operator ==(Box<T> const & other) const { return *_ptr == *other; }
+    bool operator <(Box<T> const & other) const { return *_ptr < *other._ptr; }
+    bool operator >(Box<T> const & other) const { return *_ptr > *other._ptr; }
+    bool operator <=(Box<T> const & other) const { return *_ptr <= *other._ptr; }
+    bool operator >=(Box<T> const & other) const { return *_ptr >= *other._ptr; }
+
+    template<typename TT>
+    friend std::ostream & operator<<(std::ostream & o, Box<TT> const & box);
 };
+
+template<typename T>
+std::ostream & operator<<(std::ostream & o, Box<T> const & box) {
+    return o << "BOX [" << (*box._ptr) << "]" << std::endl;
+}
+
+namespace std {
+    template<typename T>
+    void swap(Box<T> const & lhs, Box<T> const & rhs) {
+        Box<T> t = std::move(lhs);
+        lhs = std::move(rhs);
+        rhs = std::move(t);
+    }
+
+    template<typename T>
+    struct hash<Box<T>> {
+        std::hash<T> _hash;
+
+        size_t operator()(const Box<T> & box) const noexcept {
+            return _hash((*box));
+        }
+    };
+}

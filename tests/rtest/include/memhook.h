@@ -138,7 +138,7 @@
 
     ### Thread safety
 
-    No, a have a life lol
+    No, I have a life lol
 
     ### Limitations
 

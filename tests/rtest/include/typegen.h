@@ -3,6 +3,9 @@
 #include <iostream>
 #include <type_traits>
 #include <string>
+#include <unordered_set>
+#include <utility>
+#include <iterator>
 
 #include "xoshiro256.h"
 
@@ -124,6 +127,41 @@ class Typegen {
         return begin;
     }
 
+    template<typename RandIter, typename ...Args>
+    RandIter shuffle(RandIter begin, RandIter end, Args&&... args) {
+        size_t idx;
+        for(RandIter it = begin; it != end; it++) {
+            idx = range<size_t>(end - begin);
+            std::swap(*it, begin[idx]);
+        }
+        return begin;
+    }
+
+    template<
+        typename Iterator,
+        typename Hash = std::hash<typename std::iterator_traits<Iterator>::value_type>,
+        typename KeyEqual = std::equal_to<typename std::iterator_traits<Iterator>::value_type>,
+        typename ...Args
+    >
+    Iterator fill_unique(Iterator begin, Iterator end, Args&&... args) {
+        using value_type = typename std::iterator_traits<Iterator>::value_type;
+
+        std::unordered_set<value_type, Hash, KeyEqual> set;
+
+        for(Iterator it = begin; it != end; it++) {
+            value_type v;
+            
+            do
+                v = get<value_type>(std::forward<Args>(args)...);
+            while(set.end() != set.find(v));
+
+            *it = v;
+            set.insert(v);
+        }
+
+        return begin;
+    }
+
     /*
         Simple one element sampling:
 
@@ -157,7 +195,20 @@ class Typegen {
             str[i] = _get_char(c);
 
         return str;
-    } 
+    }
+
+    template<typename T>
+    typename std::enable_if<std::is_same<T, 
+        std::pair<typename T::first_type, typename T::second_type>>::value,
+    T>::type
+    get() {
+        T pair;
+
+        pair.first = get<typename T::first_type>();
+        pair.second = get<typename T::second_type>();
+
+        return pair;
+    }
 
     template<typename T>
     typename std::enable_if<std::is_integral<T>::value, T>::type

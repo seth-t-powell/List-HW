@@ -15,3 +15,7 @@ void tdbg_report_failure(const char * file, unsigned int line) {
 void tdbg_clear_output(const char * file, unsigned int line) {
     tdbg.str(std::string());
 }
+
+bool tdbg_empty() {
+    return tdbg.str().empty();
+}
