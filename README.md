@@ -12,7 +12,7 @@ The difficulty of the assignment is very close to that of the `Vector` assignmen
 ## Getting started
 Download this code by running the following command in the directory of your choice:
 ```sh
-git clone https://github.tamu.edu/csce221/assignment-list.git && cd assignment-list
+git clone git@github.com:tamu-edu-students/leyk-csce221-assignment-list.git && cd leyk-csce221-assignment-list
 ```
 Open the code in your editor of choice. For instance, if you use VS Code:
 ```sh
@@ -22,51 +22,318 @@ code .
 ## Assignment
 ### Doubly Linked List Implementation
 Implement the following [constructors](https://en.cppreference.com/w/cpp/container/list/list), [destructors](https://en.cppreference.com/w/cpp/container/list/%7Elist), and assignment operators [`operator=`](https://en.cppreference.com/w/cpp/container/list/operator%3D) which include the Rule of 5:
-| Signature | Description | Time Complexity | Test Names |
-| :--- | :--- | :--- | ---: |
-| `List();` | Default constructor. Constructs an empty container.                                             | O(1) | `constructor_default` |
-| `List( size_type count, const T& value );` | Constructs the container with `count` copies of elements with value `value`.                      | O(`count`) | `constructor_insert_copies` |
-| `explicit List( size_type count );` | Constructs the container with `count` default-inserted instances of `T`. No copies are made.        | O(`count`) | `constructor_default_inserted` |
-| `List( const List& other );` | **Copy constructor.** Constructs the container with the copy of the contents of `other`.          | O(`other.size()`) | `constructor_copy` |
-| `List( List&& other );` | **Move constructor.** Constructs the container with the contents of `other` using move semantics. | O(1) | `constructor_move` |
-| `~List();` | **Destructs the List.** The destructors of the elements are called and the used storage is deallocated. Note, that if the elements are pointers, the pointed-to objects are not destroyed. | O(`size()`) | Frequently Utilized |
-| `List& operator=( const List& other );` | **Copy assignment operator.** Replaces the contents with a copy of the contents of `other`.  | O(max(`size()`, `other.size()`)) | `operator_copy` |
-| `List& operator=( List&& other ) noexcept;` | **Move assignment operator.** Replaces the contents with those of `other` using move semantics (i.e. the data in `other` is moved from `other` into this container). `other` is in a valid but unspecified state afterwards.  | O(`size()`) | `operator_move` |
+----
+`List()` - Default constructor
 
-Click the below function names to be taken to the reference page for the function.
+**Description:** Constructs an empty linked list
 
-Implement the following functions:
-| Function Name | Brief Description | Time Complexity | Test Names |
-| :--- | :--- | :--- | ---: |
-| [`front`](https://en.cppreference.com/w/cpp/container/list/front) | access the first element | O(1) | `terminals` |
-| [`back`](https://en.cppreference.com/w/cpp/container/list/back) | access the last element | O(1) | `terminals` |
-| [`begin`](https://en.cppreference.com/w/cpp/container/list/begin) | returns an iterator to the beginning | O(1) | `terminals` & Frequently Utilized |
-| [`end`](https://en.cppreference.com/w/cpp/container/list/end) | returns an iterator to the end | O(1) | `terminals` & Frequently Utilized |
-| [`cbegin`](https://en.cppreference.com/w/cpp/container/list/begin) | returns an const iterator to the beginning | O(1) | `terminals` & Frequently Utilized |
-| [`cend`](https://en.cppreference.com/w/cpp/container/list/end) | returns an const iterator to the end | O(1) | `terminals` & Frequently Utilized |
-| [`empty`](https://en.cppreference.com/w/cpp/container/list/empty) | checks whether the container is empty | O(1) | `clear_and_empty` |
-| [`size`](https://en.cppreference.com/w/cpp/container/list/size) | returns the number of elements | O(1) | Frequently Utilized |
-| [`clear`](https://en.cppreference.com/w/cpp/container/list/clear) | clears the contents | O(`size()`) | `clear_and_empty` |
-| [`insert`](https://en.cppreference.com/w/cpp/container/list/insert) | inserts elements | O(1) | `insert` |
-| [`erase`](https://en.cppreference.com/w/cpp/container/list/erase) | erases elements | O(1) | `erase` |
-| [`push_back`](https://en.cppreference.com/w/cpp/container/list/push_back) | adds an element to the end | O(1) | `push_back` |
-| [`pop_back`](https://en.cppreference.com/w/cpp/container/list/pop_back) | removes the last element | O(1) | `pop_back` |
-| [`push_front`](https://en.cppreference.com/w/cpp/container/list/push_front) | inserts an element to the beginning | O(1) | `push_front` |
-| [`pop_front`](https://en.cppreference.com/w/cpp/container/list/pop_front) | removes the first element | O(1) | `pop_front` |
+**Complexity: O(1)**
 
-Implement `List::basic_iterator` which will create `iterator` and `const_iterator` for you. Write the following functions, which are **different from those of the Random Access Iterator from `Vector`.** If you reuse that code, it will not work at all because the list iterator is a **Bidirectional Iterator.**
-| Signature | Description | Time Complexity | Test Names |
-| :--- | :--- | :--- | :--- |
-| `basic_iterator() noexcept;` | Default Constructor. We generate it automatically for you. | O(1) | `iterator` |
-| `explicit basic_iterator(Node* ptr) noexcept;` | Parameterized Constructor. Set the managed pointer to the given `Node *`. | O(1) | None |
-| `reference operator*() const;` | Dereference the pointer, returning a reference to the value in the managed node. **Do not return a reference to the `Node`, but instead return a reference to its managed data.** | O(1) | Frequently Utilized |
-| `pointer operator->() const;` | Return a pointer to the data managed by `Node`. | O(1) | `iterator` |
-| `basic_iterator& operator++();` | **Prefix Increment.** Advance the iterator so that the managed `Node` is the next node in the list. Return a reference to this iterator. | O(1) | `iterator` & Frequently Utilized |
-| `basic_iterator operator++(int);` | **Postfix Increment.** Advance the iterator so that the managed `Node` is the next node in the list. Return a copy of this iterator from before it was advanced. | O(1) | `iterator` & Frequently Utilized |
-| `basic_iterator& operator--();` | **Prefix Decrement.** Retreat the iterator so that the managed `Node` is the previous node in the list. Return a reference to this iterator. | O(1) | `iterator` & Frequently Utilized |
-| `basic_iterator operator--(int);` | **Postfix Decrement.** Retreat the iterator so that the managed `Node` is the previous node in the list. Return a copy of this iterator from before it was retreated. | O(1) | `iterator` & Frequently Utilized |
-| `bool operator==(const basic_iterator& other) const noexcept;` | Compare two iterators and determine if they are equivalent. | O(1) | `iterator` & Frequently Utilized |
-| `bool operator!=(const basic_iterator& other) const noexcept;` | Compare two iterators and determine if they are not equivalent. | O(1) | `iterator` & Frequently Utilized |
+**Used in:** `constructor_default`
+
+**Link:** https://en.cppreference.com/w/cpp/container/list/list
+----
+`List( size_type count, const T& value )`
+
+**Description:** Constructs a linked list with `count` copies of elements with value `value`.
+
+**Complexity: O(`count`)**
+
+**Used in:** `constructor_insert_copies`
+
+**Link:** https://en.cppreference.com/w/cpp/container/list/list
+----
+`explicit List( size_type count )`
+
+**Description:** Constructs a linked list with `count` default-inserted instances of `T`. No copies are made.
+
+**Complexity: O(`count`)**
+
+**Used in:** `constructor_default_inserted`
+
+**Link:** https://en.cppreference.com/w/cpp/container/list/list
+----
+`List( const List& other )` - **Copy constructor** 
+
+**Description:** Constructs a linked list with a copy of the contents of `other`.
+
+**Complexity: O(`other.size()`)**
+
+**Used in:** `constructor_copy`
+
+**Link:** https://en.cppreference.com/w/cpp/container/list/list
+----
+`List( List&& other )` - **Move constructor**
+
+**Description:** Constructs a linked list with the contents of `other` using move semantics.
+
+**Complexity: O(1)**
+
+**Used in:** `constructor_move`
+
+**Link:** https://en.cppreference.com/w/cpp/container/list/list
+----
+`~List()` - **Destructor**
+
+**Description:** The destructors of the elements are called and the used storage is deallocated. Note, that if the elements are pointers, the pointed-to objects are not destroyed.
+
+**Complexity: O(`size()`)**
+
+**Used in:** Frequently Utilized
+
+**Link:** https://en.cppreference.com/w/cpp/container/list/%7Elist
+----
+`List& operator=( const List& other )` - **Copy assignment operator** 
+
+**Description:** Replaces the linked list with a copy of the contents of `other`.
+
+**Complexity: O(max(`size()`, `other.size()`))**
+
+**Used in:** `operator_copy`
+
+**Link:** https://en.cppreference.com/w/cpp/container/list/operator%3D
+----
+`List& operator=( List&& other ) noexcept` - **Move assignment operator** 
+
+**Description:** Replaces the linked list with the contents of `other` using move semantics (i.e. the data in `other` is moved from `other` into this container). `other` is in a valid but unspecified state afterwards.
+
+**Complexity: O(`size()`)**
+
+**Used in:** `operator_move`
+
+**Link:** https://en.cppreference.com/w/cpp/container/list/operator%3D
+----
+####Implement the following functions for `List`:
+----
+`reference front()` and `const_reference front() const`
+
+**Description:** Accesses the first element of the linked list.
+
+**Complexity: O(1)**
+
+**Used in:** `terminals`
+
+**Link:** https://en.cppreference.com/w/cpp/container/list/front
+----
+`reference back()` and `const_reference back() const`
+
+**Description:** Accesses the last element of the linked list.
+
+**Complexity: O(1)**
+
+**Used in:** `terminals`
+
+**Link:** https://en.cppreference.com/w/cpp/container/list/back
+----
+`iterator begin()` and `const_iterator begin() const noexcept`
+
+**Description:** Returns an iterator (or const iterator) to the first element of the linked list. Returns an iterator to `tail` if empty.
+
+**Complexity: O(1)**
+
+**Used in:** `terminals` & Frequently Utilized
+
+**Link:** https://en.cppreference.com/w/cpp/container/list/begin
+----
+`iterator end()` and `const_iterator end() const noexcept`
+
+**Description:** Returns an iterator (or const iterator) to `tail`.
+
+**Complexity: O(1)**
+
+**Used in:** `terminals` & Frequently Utilized
+
+**Link:** https://en.cppreference.com/w/cpp/container/list/end
+----
+`const_iterator cbegin() const noexcept`
+
+**Description:** Returns a const iterator to the first element of the linked list. Returns a const iterator to `tail` if empty.
+
+**Complexity: O(1)**
+
+**Used in:** `terminals` & Frequently Utilized
+
+**Link:** https://en.cppreference.com/w/cpp/container/list/begin
+----
+`const_iterator cend() const noexcept`
+
+**Description:** Returns a const iterator to `tail`.
+
+**Complexity: O(1)**
+
+**Used in:** `terminals` & Frequently Utilized
+
+**Link:** https://en.cppreference.com/w/cpp/container/list/end
+----
+`bool empty() const noexcept`
+
+**Description:** Checks whether the container is empty.
+
+**Complexity: O(1)**
+
+**Used in:** `clear_and_empty`
+
+**Link:** https://en.cppreference.com/w/cpp/container/list/empty
+----
+`size_t size() const noexcept`
+
+**Description:** Returns the number of elements.
+
+**Complexity: O(1)**
+
+**Used in:** Frequently Utilized
+
+**Link:** https://en.cppreference.com/w/cpp/container/list/size
+----
+`void clear() noexcept`
+
+**Description:** Clears the contents of the linked list.
+
+**Complexity: O(`size()`)**
+
+**Used in:** `clear_and_empty`
+
+**Link:** https://en.cppreference.com/w/cpp/container/list/clear
+----
+`iterator insert(const_iterator pos, const T& value)` and `iterator insert(const_iterator pos, T&& value)`
+
+**Description:** Inserts elements.
+
+**Complexity: O(1)**
+
+**Used in:** `insert`
+
+**Link:** https://en.cppreference.com/w/cpp/container/list/insert
+----
+`iterator erase(const_iterator pos)`
+
+**Description:** Erases elements.
+
+**Complexity: O(1)**
+
+**Used in:** `erase`
+
+**Link:** https://en.cppreference.com/w/cpp/container/list/erase
+----
+`void push_back(const T& value)` and `void push_back(T&& value)`
+
+**Description:** Adds an element to the end of the list.
+
+**Complexity: O(1)**
+
+**Used in:** `push_back`
+
+**Link:** https://en.cppreference.com/w/cpp/container/list/push_back
+----
+`void pop_back()`
+
+**Description:** Removes the last element of the list.
+
+**Complexity: O(1)**
+
+**Used in:** `pop_back`
+
+**Link:** https://en.cppreference.com/w/cpp/container/list/pop_back
+----
+`void push_front(const T& value)` and `void push_front(T&& value)`
+
+**Description:** Inserts an element at the beginning of the list.
+
+**Complexity: O(1)**
+
+**Used in:** `push_front`
+
+**Link:** https://en.cppreference.com/w/cpp/container/list/push_front
+----
+`void pop_front()`
+
+**Description:** Removes the first element of the list.
+
+**Complexity: O(1)**
+
+**Used in:** `pop_front`
+
+**Link:** https://en.cppreference.com/w/cpp/container/list/pop_front
+----
+
+### Implement the List's Iterator
+
+Implement `List::basic_iterator` which will create `iterator` and `const_iterator` for you. Write the following functions, which are **different from those of the Random Access Iterator from `Vector`.** If you reuse that code, it will not work at all because the list iterator is a **Bidirectional Iterator**.
+
+#### Implement the following functions for `basic_iterator`:
+----
+`basic_iterator() noexcept` - Default Constructor
+
+**Description:** Create a default `basic_iterator`
+
+**Complexity: O(1)**
+
+**Used in:** `iterator`
+----
+`reference operator*() const`
+
+**Description:** Dereference the pointer, returning a reference to the value in the managed node. **Do not return a reference to the `Node`, but instead return a reference to its managed data.**
+
+**Complexity: O(1)**
+
+**Used in:** Frequently Utilized
+----
+`pointer operator->() const`
+
+**Description:** Return a pointer to the data managed by `Node`. **Do not return a pointer to the `Node`, but instead return a pointer to its managed data.**
+
+**Complexity: O(1)**
+
+**Used in:** `iterator`
+----
+`basic_iterator& operator++()`
+
+**Description:** **Prefix Increment.** Advance the iterator so that it points to the next node in the list. Return a reference to this iterator.
+
+**Complexity: O(1)** 
+
+**Used in:** `iterator` & Frequently Utilized
+----
+`basic_iterator operator++(int)`
+
+**Decription:** **Postfix Increment.** Advance the iterator so that it points to the next node in the list. Return a copy of this iterator from before it was advanced.
+
+**Complexity: O(1)**
+
+**Used in:** `iterator` & Frequently Utilized
+----
+`basic_iterator& operator--()`
+
+**Description:** **Prefix Decrement.** Retreat the iterator so that it points to the previous node in the list. Return a reference to this iterator.
+
+**Complexity: O(1)**
+
+**Used in:** `iterator` & Frequently Utilized
+----
+`basic_iterator operator--(int)`
+
+**Description:** **Postfix Decrement.** Retreat the iterator so that it points to the previous node in the list. Return a copy of this iterator from before it was retreated.
+
+**Complexity: O(1)**
+
+**Used in:** `iterator` & Frequently Utilized
+----
+`bool operator==(const basic_iterator& other) const noexcept`
+
+**Description:** Compare two iterators and determine if they are equivalent.
+
+**Complexity: O(1)**
+
+**Used in:** `iterator` & Frequently Utilized
+----
+`bool operator!=(const basic_iterator& other) const noexcept`
+
+**Description:** Compare two iterators and determine if they are not equivalent.
+
+**Complexity: O(1)**
+
+**Used in:** `iterator` & Frequently Utilized
+----
 
 A possible implementation (followed by GCC) is to make:
 ```cpp
@@ -90,16 +357,28 @@ A standard playing card has two main pieces of information:
    - In many games the order is: Ace, 2, 3, 4, 5, 6, 7, 8, 9, 10, Jack, Queen, and King
 
 We provide for you a `struct Card` in [`Cards.h`](./src/Cards.h) and ask that you implement the following two functions in [`Cards.cpp`](./src/Cards.cpp):
-| Signature | Description | Time Complexity | Test Names |
-| :--- | :--- | :--- | :--- |
-| `List<Card> buildDeck(std::ifstream file);` | Read from the file the cards and add them to a `List<Card>` in the order that they are read. |  | `build_deck` |
-| `List<Card> shuffle(const List<Card>& deck);` | Return a new list with the same cards in a shuffled order described below. | O(`deck.size()`) | `shuffle` |
+----
+`List<Card> buildDeck(std::ifstream file)`
 
+**Description:** Read cards from the file and add them to a `List<Card>` in the order that they are read.
+
+**Complexity: O(n)**
+
+**Used in:** `build_deck`
+----
+`List<Card> shuffle(const List<Card>& deck)`
+
+**Description:** Return a new list with the same cards in a shuffled order described below.
+
+**Complexity: O(`deck.size()`)**
+
+**Used in:** `shuffle`
+----
 #### Simple Shuffling Algorithm
 1. Create a new empty deck to which we will add cards as we shuffle them. We henceforth refer to this as the shuffled deck.
 2. Iterate over the `deck`, and for each card, flip a coin. The coin flip must be generated using the `rand221` function in `deck.cpp` which is analogous to the [standard C function `rand()`](https://www.cplusplus.com/reference/cstdlib/rand/).
 3. If the result is Heads (even), add the card to the front of the shuffled deck; otherwise, add it to the back of the shuffled deck.
-4. The `deck` has been shuffled into the shuffled deck when each card has been added. Return this shuffled deck from the `shuffle` function.
+4. The `deck` has been completly shuffled when each card has been added. Return this shuffled deck from the `shuffle` function.
 
 
 ## Incremental Testing
@@ -108,8 +387,8 @@ Unlike `Vector`, elements are not organized contiguously in `List`. This means w
 must be accessed through the `iterator`. This impacts testing since the correctness of the `iterator` can't be tested independently of
 the list itself. There are many possible ways to approach the assignment. Although, there are also many implicit dependencies in the test cases. To minimize test dependencies, we recommend you follow the ordering below. These methods listed in the below steps are explicitly required by the test cases. You may wish to write additional helper methods or implement methods in an alternative order to avoid repetition.
  
-### 1. Implement the following methods:
-```
+### 1. Implement the following methods first:
+```cpp
 explicit List( size_type count );
 ~List();
 size_t size();
@@ -121,11 +400,11 @@ reference operator*() const;
 bool operator!=(const basic_iterator& other) const noexcept;
 ```
  
-This is the minimal set of methods we need for rigorous testing. With a correct implementation these of methods, you will be able to pass the `constructor_default_inserted` test. 
+This is the minimal set of methods we need for rigorous testing. With a correct implementation of these methods, you will be able to pass the `constructor_default_inserted` test. 
  
 ### 2. Flesh out the `iterator`:
  
-```
+```cpp
 pointer operator->() const;
 bool operator==(const basic_iterator& other) const noexcept;
 basic_iterator operator--(int);
@@ -138,7 +417,7 @@ After implementing these methods, you will be able to pass the `iterator` test.
  
 ### 3. Finish the `List`:
  
-At this point, the necessary foundation should exist for you to approach the remaining tests. The functions are listed with their corresponding test cases in the table above. Most will require you to implement a single method on top of this foundation. Notable exceptions include:
+At this point, the necessary foundation should exist for you to approach the remaining tests. The functions are listed with their corresponding test cases above. Most will require you to implement a single method on top of this foundation. Notable exceptions include:
  
 - The `push` family of methods requires that you implement the default constructor
 - `clear` and `empty` are aggregated into a single test
@@ -181,7 +460,7 @@ cd ../..
 ```
 > Alex recommends you use `cgdb` which has the same commands as `gdb` but a better user interface. You can install it with `sudo apt install cgdb` on `WSL` or `brew install cgdb` on `MacOS` (provided you have [brew](https://brew.sh))
 
-The first command builds the tests, the next enters the folder where the tests were build. The third invokes `gdb` (**use `lldb` if on Mac OSX**) which is used to debug the program by examining Segmentation Faults and running code line-by-line. Finally, the last command takes you back to the top-level directory.
+The first command builds the tests, the next enters the folder where the tests were built. The third invokes `gdb` (**use `lldb` if on Mac OSX**) which is used to debug the program by examining Segmentation Faults and running code line-by-line. Finally, the last command takes you back to the top-level directory.
 
 ## Turn In
 Submit the following files **and no other files** to Gradescope:
