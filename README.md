@@ -22,6 +22,7 @@ code .
 ## Assignment
 ### Doubly Linked List Implementation
 Implement the following [constructors](https://en.cppreference.com/w/cpp/container/list/list), [destructors](https://en.cppreference.com/w/cpp/container/list/%7Elist), and assignment operators [`operator=`](https://en.cppreference.com/w/cpp/container/list/operator%3D) which include the Rule of 5:
+
 ----
 `List()` - Default constructor
 
@@ -32,6 +33,7 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 **Used in:** `constructor_default`
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/list
+
 ----
 `List( size_type count, const T& value )`
 
@@ -42,6 +44,7 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 **Used in:** `constructor_insert_copies`
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/list
+
 ----
 `explicit List( size_type count )`
 
@@ -52,6 +55,7 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 **Used in:** `constructor_default_inserted`
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/list
+
 ----
 `List( const List& other )` - **Copy constructor** 
 
@@ -62,6 +66,7 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 **Used in:** `constructor_copy`
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/list
+
 ----
 `List( List&& other )` - **Move constructor**
 
@@ -72,6 +77,7 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 **Used in:** `constructor_move`
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/list
+
 ----
 `~List()` - **Destructor**
 
@@ -82,6 +88,7 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 **Used in:** Frequently Utilized
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/%7Elist
+
 ----
 `List& operator=( const List& other )` - **Copy assignment operator** 
 
@@ -92,6 +99,7 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 **Used in:** `operator_copy`
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/operator%3D
+
 ----
 `List& operator=( List&& other ) noexcept` - **Move assignment operator** 
 
@@ -102,8 +110,11 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 **Used in:** `operator_move`
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/operator%3D
+
 ----
+
 ####Implement the following functions for `List`:
+
 ----
 `reference front()` and `const_reference front() const`
 
@@ -114,6 +125,7 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 **Used in:** `terminals`
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/front
+
 ----
 `reference back()` and `const_reference back() const`
 
@@ -124,6 +136,7 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 **Used in:** `terminals`
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/back
+
 ----
 `iterator begin()` and `const_iterator begin() const noexcept`
 
@@ -134,6 +147,7 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 **Used in:** `terminals` & Frequently Utilized
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/begin
+
 ----
 `iterator end()` and `const_iterator end() const noexcept`
 
@@ -144,6 +158,7 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 **Used in:** `terminals` & Frequently Utilized
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/end
+
 ----
 `const_iterator cbegin() const noexcept`
 
@@ -154,6 +169,7 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 **Used in:** `terminals` & Frequently Utilized
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/begin
+
 ----
 `const_iterator cend() const noexcept`
 
@@ -164,6 +180,7 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 **Used in:** `terminals` & Frequently Utilized
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/end
+
 ----
 `bool empty() const noexcept`
 
@@ -174,6 +191,7 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 **Used in:** `clear_and_empty`
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/empty
+
 ----
 `size_t size() const noexcept`
 
@@ -184,6 +202,7 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 **Used in:** Frequently Utilized
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/size
+
 ----
 `void clear() noexcept`
 
@@ -194,6 +213,7 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 **Used in:** `clear_and_empty`
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/clear
+
 ----
 `iterator insert(const_iterator pos, const T& value)` and `iterator insert(const_iterator pos, T&& value)`
 
@@ -204,6 +224,7 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 **Used in:** `insert`
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/insert
+
 ----
 `iterator erase(const_iterator pos)`
 
@@ -214,6 +235,7 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 **Used in:** `erase`
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/erase
+
 ----
 `void push_back(const T& value)` and `void push_back(T&& value)`
 
@@ -224,6 +246,7 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 **Used in:** `push_back`
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/push_back
+
 ----
 `void pop_back()`
 
@@ -234,6 +257,7 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 **Used in:** `pop_back`
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/pop_back
+
 ----
 `void push_front(const T& value)` and `void push_front(T&& value)`
 
@@ -244,6 +268,7 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 **Used in:** `push_front`
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/push_front
+
 ----
 `void pop_front()`
 
@@ -254,6 +279,7 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 **Used in:** `pop_front`
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/pop_front
+
 ----
 
 ### Implement the List's Iterator
@@ -261,6 +287,7 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 Implement `List::basic_iterator` which will create `iterator` and `const_iterator` for you. Write the following functions, which are **different from those of the Random Access Iterator from `Vector`.** If you reuse that code, it will not work at all because the list iterator is a **Bidirectional Iterator**.
 
 #### Implement the following functions for `basic_iterator`:
+
 ----
 `basic_iterator() noexcept` - Default Constructor
 
@@ -269,6 +296,7 @@ Implement `List::basic_iterator` which will create `iterator` and `const_iterato
 **Complexity: O(1)**
 
 **Used in:** `iterator`
+
 ----
 `reference operator*() const`
 
@@ -277,6 +305,7 @@ Implement `List::basic_iterator` which will create `iterator` and `const_iterato
 **Complexity: O(1)**
 
 **Used in:** Frequently Utilized
+
 ----
 `pointer operator->() const`
 
@@ -285,6 +314,7 @@ Implement `List::basic_iterator` which will create `iterator` and `const_iterato
 **Complexity: O(1)**
 
 **Used in:** `iterator`
+
 ----
 `basic_iterator& operator++()`
 
@@ -293,6 +323,7 @@ Implement `List::basic_iterator` which will create `iterator` and `const_iterato
 **Complexity: O(1)** 
 
 **Used in:** `iterator` & Frequently Utilized
+
 ----
 `basic_iterator operator++(int)`
 
@@ -301,6 +332,7 @@ Implement `List::basic_iterator` which will create `iterator` and `const_iterato
 **Complexity: O(1)**
 
 **Used in:** `iterator` & Frequently Utilized
+
 ----
 `basic_iterator& operator--()`
 
@@ -309,6 +341,7 @@ Implement `List::basic_iterator` which will create `iterator` and `const_iterato
 **Complexity: O(1)**
 
 **Used in:** `iterator` & Frequently Utilized
+
 ----
 `basic_iterator operator--(int)`
 
@@ -317,6 +350,7 @@ Implement `List::basic_iterator` which will create `iterator` and `const_iterato
 **Complexity: O(1)**
 
 **Used in:** `iterator` & Frequently Utilized
+
 ----
 `bool operator==(const basic_iterator& other) const noexcept`
 
@@ -325,6 +359,7 @@ Implement `List::basic_iterator` which will create `iterator` and `const_iterato
 **Complexity: O(1)**
 
 **Used in:** `iterator` & Frequently Utilized
+
 ----
 `bool operator!=(const basic_iterator& other) const noexcept`
 
@@ -333,6 +368,7 @@ Implement `List::basic_iterator` which will create `iterator` and `const_iterato
 **Complexity: O(1)**
 
 **Used in:** `iterator` & Frequently Utilized
+
 ----
 
 A possible implementation (followed by GCC) is to make:
@@ -357,6 +393,7 @@ A standard playing card has two main pieces of information:
    - In many games the order is: Ace, 2, 3, 4, 5, 6, 7, 8, 9, 10, Jack, Queen, and King
 
 We provide for you a `struct Card` in [`Cards.h`](./src/Cards.h) and ask that you implement the following two functions in [`Cards.cpp`](./src/Cards.cpp):
+
 ----
 `List<Card> buildDeck(std::ifstream file)`
 
@@ -365,6 +402,7 @@ We provide for you a `struct Card` in [`Cards.h`](./src/Cards.h) and ask that yo
 **Complexity: O(n)**
 
 **Used in:** `build_deck`
+
 ----
 `List<Card> shuffle(const List<Card>& deck)`
 
@@ -373,6 +411,7 @@ We provide for you a `struct Card` in [`Cards.h`](./src/Cards.h) and ask that yo
 **Complexity: O(`deck.size()`)**
 
 **Used in:** `shuffle`
+
 ----
 #### Simple Shuffling Algorithm
 1. Create a new empty deck to which we will add cards as we shuffle them. We henceforth refer to this as the shuffled deck.
