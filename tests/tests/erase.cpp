@@ -40,7 +40,7 @@ TEST(erase) {
                 if(gt_pos != gt_ll.end())
                     ASSERT_EQ(*gt_pos, *pos);
 
-                // lists should be consistant
+                // lists should be consistent
                 {
                     ASSERT_EQ(gt_ll.size(), ll.size());
 

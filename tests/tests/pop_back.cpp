@@ -16,10 +16,10 @@ TEST(pop_back) {
         {
             while(gt_ll.size() > 0) {
                 gt_ll.pop_back();
-                
+
                 {
                     Memhook mh;
-                    
+
                     ll.pop_back();
 
                     // Should free one node
@@ -27,17 +27,21 @@ TEST(pop_back) {
                     ASSERT_EQ(0ULL, mh.n_allocs());
                 }
 
-                // lists should be consistant
+                // lists should be consistent
                 {
                     ASSERT_EQ(gt_ll.size(), ll.size());
 
                     auto gt_it = gt_ll.begin();
                     auto it = ll.begin();
+                    // Iterate forward through the List to ensure the begin(), end(), and operator++()
+                    // and operator*() functions operate correctly. The correct ordering should result
+                    // from pop back.
                     while(gt_it != gt_ll.end())
-                        ASSERT_EQ_(*gt_it++, *it++, "An inconsistency was found when iterating forward");
-                    
+                        ASSERT_EQ(*gt_it++, *it++);
+
+                    // Do the same in reverse
                     while(gt_it != gt_ll.begin())
-                        ASSERT_EQ_(*--gt_it, *--it,  "An inconsistency was found when iterating backward");
+                        ASSERT_EQ(*--gt_it, *--it);
                 }
             }
 

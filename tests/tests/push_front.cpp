@@ -27,11 +27,17 @@ TEST(push_front) {
 
             auto it = ll->cend();
             size_t j = 0;
+            // Iterate backwards through the list ensuring
+            // that the reverse ordering have been obtained
+            // compared to the initialization of the ground 
+            // truth vector.
             while(it != ll->cbegin())
-                ASSERT_EQ_(gt[j++], (*--it), "An inconsistency was found when iterating forward");
+                ASSERT_EQ(gt[j++], (*--it));
 
+            // Iterate back forward through the list.
+            // This tests both iterator directions.
             while(it != ll->cend())
-                ASSERT_EQ_(gt[--j], (*it++), "An inconsistency was found when iterating backward");
+                ASSERT_EQ(gt[--j], (*it++));
 
             delete ll;
 
@@ -60,12 +66,18 @@ TEST(push_front) {
 
             auto it = ll->cend();
             size_t j = 0;
+            // Iterate backwards through the list ensuring
+            // that the reverse ordering have been obtained
+            // compared to the initialization of the ground 
+            // truth vector.
             while(it != ll->cbegin())
-                ASSERT_EQ_(gt[j++], **--it, "An inconsistency was found when iterating forward");
+                ASSERT_EQ(gt[j++], **--it);
 
+            // Iterate back forward through the list.
+            // This tests both iterator directions.
             while(it != ll->cend())
-                ASSERT_EQ_(gt[--j], **it++, "An inconsistency was found when iterating backward");
-            
+                ASSERT_EQ(gt[--j], **it++);
+
             delete ll;
 
             // Allocated memory should be freed

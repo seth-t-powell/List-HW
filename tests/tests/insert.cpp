@@ -41,7 +41,7 @@ TEST(insert) {
                 // return value should point to item
                 ASSERT_EQ(value, *it_val);
 
-                // lists should be consistant
+                // lists should be consistent
                 {
                     ASSERT_EQ(gt_ll.size(), ll->size());
 
