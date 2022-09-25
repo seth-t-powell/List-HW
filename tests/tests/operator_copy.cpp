@@ -28,7 +28,7 @@ TEST(operator_copy) {
             ASSERT_EQ(n, mh.n_allocs());
             ASSERT_EQ(prev_n, mh.n_frees());
 
-            // Check consistancy of copy
+            // Check consistency of copy
             {
                 ASSERT_EQ(gt_ll.size(), ll_cpy.size());
 
@@ -48,7 +48,7 @@ TEST(operator_copy) {
             ASSERT_EQ(0ULL, mutilate_mh.n_allocs());
             ASSERT_EQ(0ULL, mutilate_mh.n_frees());
 
-            // Check consistancy of copy
+            // Check consistency of copy
             {
                 ASSERT_EQ(gt_ll.size(), ll_cpy.size());
 

@@ -45,7 +45,7 @@ TEST(operator_move_consistency) {
             ASSERT_EQ(0ULL, mh.n_allocs());
             ASSERT_EQ(prev_n, mh.n_frees());
 
-            // lists should be consistant
+            // lists should be consistent
             {
                 ASSERT_EQ(gt_ll.size(), ll_cpy.size());
 
@@ -93,7 +93,7 @@ TEST(operator_move_consistency) {
                         pos = ll.erase(pos);
                     }
 
-                    // lists should be consistant
+                    // lists should be consistent
                     {
                         ASSERT_EQ(gt_ll.size(), ll_cpy.size());
 

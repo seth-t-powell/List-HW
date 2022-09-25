@@ -74,7 +74,7 @@ TEST(operator_copy_consistency) {
                     pos = ll.erase(pos);
                 }
 
-                // lists should be consistant
+                // lists should be consistent
                 {
                     ASSERT_EQ(gt_ll.size(), ll_cpy.size());
 

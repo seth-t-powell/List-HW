@@ -60,11 +60,16 @@ TEST(push_back) {
 
             auto it = ll->cbegin();
             size_t j = 0;
+            // Iterate forward through the groundtruth vector to ensure
+            // all values match the values in the student vector. Failing
+            // this condition suggests incorrect values exist in the dynamic
+            // array or the iterator is not functioning correctly.
             for(; it != ll->cend(); it++)
-                ASSERT_EQ_(gt[j++], **it,  "An inconsistency was found when iterating forward");
+                ASSERT_EQ(gt[j++], **it);
 
+            // Do the same in reverse to ensure reverse iterator works
             while(it != ll->cbegin())
-                ASSERT_EQ_(gt[--j], **(--it), "An inconsistency was found when iterating backward");
+                ASSERT_EQ(gt[--j], **(--it));
 
             delete ll;
 
