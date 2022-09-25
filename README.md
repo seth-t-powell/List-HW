@@ -9,6 +9,22 @@ Topics:
   - Simplification of Random Access Iterators
 
 The difficulty of the assignment is very close to that of the `Vector` assignment. You do not need to write as many functions, but there is much more nuanced work with the inner class `List::Node`.
+
+## Table of Contents
+[Getting Started](#getting-started)
+
+[Assignment](#assignment)
+
+- [Doubly Linked List Implementation](#doubly-linked-list-implementation)
+
+- [Shuffling Cards (Application of Doubly Linked List)](#shuffling-cards-application-of-doubly-linked-list)
+
+[Incremental Testing](#incremental-testing)
+
+[Run Tests](#run-tests)
+
+[Turn In](#turn-in)
+
 ## Getting started
 Download this code by running the following command in the directory of your choice:
 ```sh
