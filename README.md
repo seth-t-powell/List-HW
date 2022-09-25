@@ -30,7 +30,7 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 
 **Complexity: O(1)**
 
-**Used in:** `constructor_default`
+**Used in:** `constructor_default`, `insert`, `push_front`, `terminals`
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/list
 
@@ -41,7 +41,7 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 
 **Complexity: O(`count`)**
 
-**Used in:** `constructor_insert_copies`
+**Used in:** `constructor_insert_copies`, `clear_and_empty`
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/list
 
@@ -52,7 +52,7 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 
 **Complexity: O(`count`)**
 
-**Used in:** `constructor_default_inserted`
+**Used in:** `constructor_default_inserted` & Frequently Utilized
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/list
 
@@ -63,7 +63,7 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 
 **Complexity: O(`other.size()`)**
 
-**Used in:** `constructor_copy`
+**Used in:** `constructor_copy`, `build_deck`, `shuffle`
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/list
 
@@ -122,7 +122,7 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 
 **Complexity: O(1)**
 
-**Used in:** `terminals`
+**Used in:** `terminals`, `shuffle`
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/front
 
@@ -133,7 +133,7 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 
 **Complexity: O(1)**
 
-**Used in:** `terminals`
+**Used in:** `terminals`, `shuffle`
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/back
 
@@ -188,7 +188,7 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 
 **Complexity: O(1)**
 
-**Used in:** `clear_and_empty`
+**Used in:** `clear_and_empty`, `operator_copy_consistency`
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/empty
 
@@ -221,7 +221,7 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 
 **Complexity: O(1)**
 
-**Used in:** `insert`
+**Used in:** `insert`, `operator_copy_consistency`, `operator_move_consistency`
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/insert
 
@@ -232,7 +232,7 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 
 **Complexity: O(1)**
 
-**Used in:** `erase`
+**Used in:** `erase`, `operator_copy_consistency`, `operator_move_consistency`
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/erase
 
@@ -254,7 +254,7 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 
 **Complexity: O(1)**
 
-**Used in:** `pop_back`
+**Used in:** `pop_back`, `shuffle`
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/pop_back
 
@@ -276,7 +276,7 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 
 **Complexity: O(1)**
 
-**Used in:** `pop_front`
+**Used in:** `pop_front`, `shuffle`
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/pop_front
 
@@ -313,7 +313,7 @@ Implement `List::basic_iterator` which will create `iterator` and `const_iterato
 
 **Complexity: O(1)**
 
-**Used in:** `iterator`
+**Used in:** `iterator`, `build_deck`
 
 ----
 `basic_iterator& operator++()`
@@ -401,7 +401,7 @@ We provide for you a `struct Card` in [`Cards.h`](./src/Cards.h) and ask that yo
 
 **Complexity: O(n)**
 
-**Used in:** `build_deck`
+**Used in:** `build_deck`, `shuffle`
 
 ----
 `List<Card> shuffle(const List<Card>& deck)`
