@@ -19,7 +19,7 @@
 // Override random generator for testing
 #include "deck.h"
 
-#define TEST(name) UTEST(SORT, name)
+#define TEST(name) UTEST(LIST, name)
 
 size_t constexpr TEST_ITER = 100;
 
