@@ -408,7 +408,7 @@ We provide for you a `struct Card` in [`Cards.h`](./src/Cards.h) and ask that yo
 ----
 `List<Card> shuffle(const List<Card>& deck)`
 
-**Description:** Return a new list with the same cards in a shuffled order described [here](#simple-shuffling-algorithm).
+**Description:** Return a new list with the same cards in a shuffled order described [below](#simple-shuffling-algorithm).
 
 **Complexity: O(`deck.size()`)**
 
