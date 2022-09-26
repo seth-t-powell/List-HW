@@ -10,6 +10,12 @@ Topics:
 
 The difficulty of the assignment is very close to that of the `Vector` assignment. You do not need to write as many functions, but there is much more nuanced work with the inner class `List::Node`.
 
+A linked list consists of a sequence of data members in memory. Rather than maintaining adjacent elements in one contiguous memory block, a link list is a sequence of memory blocks each containing a data member and the memory location of the next memory block in the sequence. These memory blocks are often referred to as “nodes.” In C/C++, nodes are structs or classes containing a pointer (memory address) of the next node as well as a data member. Doubly linked lists also contain a pointer to the previous node in the list to permit bidirectional iteration.
+
+## Suggested Implementation using Sentinel Nodes
+
+There are several strategies for implementing linked lists. While any strategy conforming to the `std::list` API will be accepted, we recommend implementing the doubly-linked list using "sentinel nodes." In the starter code, the `List::Node` struct represents a single node in the list. Each node contains three members: `next` is a pointer to the next node in the sequence, `prev` is a pointer to the previous node in the sequence, and `data` is the data member stored in the current node. The data nodes will contain all three fields. The only exception to this is the sentinel nodes. Sentinel nodes are extra “dummy” nodes which are added before the first data node and after the last data node. While these denote the start and end of the collection, they do not themselves contain any data. (The data member can be left uninitialized.) A good analogy of this is bookends, in which the bookends are on both ends of a book collection, but are not books in the collection. When the list is first initialized, the `head`’s `next` pointer should point to the `tail` and the `tail`’s and `tail`’s previous pointer should point to the `head`. The `head` and `tail` are allocated along with the List collection since they are always present. As items are added, they will be added between the head and tail to maintain a fully linked list.
+
 ## Table of Contents
 [Getting Started](#getting-started)
 
@@ -24,9 +30,6 @@ The difficulty of the assignment is very close to that of the `Vector` assignmen
 [Run Tests](#run-tests)
 
 [Turn In](#turn-in)
-
-=======
-This assignment follows the sentinel model for a doubly-linked list. This means that the list always has a `head` and `tail` node that denote the front and end of the list, even if it is empty. They denote the start and end of a collection, but are not necessarily elements of the collection. A good analogy of this is bookends, in which they are on both ends of a book collection, but are not books in the collection. Your sentinel nodes should not hold any of the elements of the list, but the `head` should have a pointer to the first element and the `tail` should have a pointer to the last element. In the case of an empty list, `head` and `tail` should point to each other. Because we know that `List` will always have a `head` and a `tail`, we can and should allocate them on the stack as members of the class. Since they do not represent any of the list elements, the `value` for the sentinel nodes does not matter. The elements of `List` are variable to change however, so they should be allocated on the heap.
 
 ## Getting started
 Download this code by running the following command in the directory of your choice:
