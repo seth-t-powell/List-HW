@@ -23,6 +23,8 @@ There are several strategies for implementing linked lists. While any strategy c
 
 - [Doubly Linked List Implementation](#doubly-linked-list-implementation)
 
+- [Implement the List's Iterator](#implement-the-lists-iterator)
+
 - [Shuffling Cards (Application of Doubly Linked List)](#shuffling-cards-application-of-doubly-linked-list)
 
 [Incremental Testing](#incremental-testing)
