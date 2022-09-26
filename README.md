@@ -28,7 +28,7 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 ----
 `List()` - **Default constructor**
 
-**Description:** Constructs an empty linked list. In an empty linked list, head and tail should point to each other.
+**Description:** Constructs an empty linked list. In an empty linked list, `head` and `tail` should point to each other.
 
 **Complexity: O(1)**
 
