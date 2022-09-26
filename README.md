@@ -9,6 +9,8 @@ Topics:
   - Simplification of Random Access Iterators
 
 The difficulty of the assignment is very close to that of the `Vector` assignment. You do not need to write as many functions, but there is much more nuanced work with the inner class `List::Node`.
+
+This assignment follows the sentinel model for a doubly-linked list. This means that the list always has a `head` and `tail` node that denote the front and end of the list, even if it is empty. They denote the start and end of a collection, but are not necessarily elements of the collection. A good analogy of this is bookends, in which they are on both ends of a book collection, but are not books in the collection. Your sentinel nodes should not hold any of the elements of the list, but the `head` should have a pointer to the first element and the `tail` should have a pointer to the last element. In the case of an empty list, `head` and `tail` should point to each other. Because we know that `List` will always have a `head` and a `tail`, we can and should allocate them on the stack as members of the class. Since they do not represent any of the list elements, the `value` for the sentinel nodes does not matter. The elements of `List` are variable to change however, so they should be allocated on the heap.
 ## Getting started
 Download this code by running the following command in the directory of your choice:
 ```sh
@@ -24,9 +26,9 @@ code .
 Implement the following [constructors](https://en.cppreference.com/w/cpp/container/list/list), [destructors](https://en.cppreference.com/w/cpp/container/list/%7Elist), and assignment operators [`operator=`](https://en.cppreference.com/w/cpp/container/list/operator%3D) which include the Rule of 5:
 
 ----
-`List()` - Default constructor
+`List()` - **Default constructor**
 
-**Description:** Constructs an empty linked list
+**Description:** Constructs an empty linked list. In an empty linked list, head and tail should point to each other.
 
 **Complexity: O(1)**
 
@@ -59,7 +61,7 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 ----
 `List( const List& other )` - **Copy constructor** 
 
-**Description:** Constructs a linked list with a copy of the contents of `other`.
+**Description:** Constructs a linked list with a **copy** of the contents of `other`.
 
 **Complexity: O(`other.size()`)**
 
@@ -70,7 +72,7 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 ----
 `List( List&& other )` - **Move constructor**
 
-**Description:** Constructs a linked list with the contents of `other` using move semantics.
+**Description:** Constructs a linked list with the contents of `other` using move semantics (i.e. the data in `other` is moved from `other` into this container). No new nodes should be made. `other` should be left in an empty state after. To call the move constructor, you can use `List<type> list1 = std::move(list2);`.
 
 **Complexity: O(1)**
 
@@ -103,7 +105,7 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 ----
 `List& operator=( List&& other ) noexcept` - **Move assignment operator** 
 
-**Description:** Replaces the linked list with the contents of `other` using move semantics (i.e. the data in `other` is moved from `other` into this container). `other` is in a valid but unspecified state afterwards.
+**Description:** Replaces the linked list with the contents of `other` using move semantics (i.e. the data in `other` is moved from `other` into this container). No new nodes should be made. `other` should be left in an empty state after. To call the move assignment operator, you can use `list1 = std::move(list2);`.
 
 **Complexity: O(`size()`)**
 
@@ -151,7 +153,7 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 ----
 `iterator end()` and `const_iterator end() const noexcept`
 
-**Description:** Returns an iterator (or const iterator) to `tail`.
+**Description:** Returns an iterator (or const iterator) to the end of the list (`tail`).
 
 **Complexity: O(1)**
 
@@ -173,7 +175,7 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 ----
 `const_iterator cend() const noexcept`
 
-**Description:** Returns a const iterator to `tail`.
+**Description:** Returns a const iterator to the end of the list (`tail`).
 
 **Complexity: O(1)**
 
@@ -206,7 +208,7 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 ----
 `void clear() noexcept`
 
-**Description:** Clears the contents of the linked list.
+**Description:** Clears the contents of the linked list. The list should be left in an empty state afterwards.
 
 **Complexity: O(`size()`)**
 
@@ -217,7 +219,7 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 ----
 `iterator insert(const_iterator pos, const T& value)` and `iterator insert(const_iterator pos, T&& value)`
 
-**Description:** Inserts elements.
+**Description:** Inserts `value` before `pos` .
 
 **Complexity: O(1)**
 
@@ -228,7 +230,7 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 ----
 `iterator erase(const_iterator pos)`
 
-**Description:** Erases elements.
+**Description:** Removes the element at `pos`.
 
 **Complexity: O(1)**
 
@@ -239,7 +241,7 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 ----
 `void push_back(const T& value)` and `void push_back(T&& value)`
 
-**Description:** Adds an element to the end of the list.
+**Description:** Adds `value` to the end of the list.
 
 **Complexity: O(1)**
 
@@ -261,7 +263,7 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 ----
 `void push_front(const T& value)` and `void push_front(T&& value)`
 
-**Description:** Inserts an element at the beginning of the list.
+**Description:** Inserts `value` at the beginning of the list.
 
 **Complexity: O(1)**
 
@@ -291,7 +293,7 @@ Implement `List::basic_iterator` which will create `iterator` and `const_iterato
 ----
 `basic_iterator() noexcept` - Default Constructor
 
-**Description:** Create a default `basic_iterator`
+**Description:** Create a default `basic_iterator`.
 
 **Complexity: O(1)**
 
@@ -327,7 +329,7 @@ Implement `List::basic_iterator` which will create `iterator` and `const_iterato
 ----
 `basic_iterator operator++(int)`
 
-**Decription:** **Postfix Increment.** Advance the iterator so that it points to the next node in the list. Return a copy of this iterator from before it was advanced.
+**Decription:** **Postfix Increment.** Advance the iterator so that it points to the next node in the list. Return a copy of the iterator from before it was advanced.
 
 **Complexity: O(1)**
 
@@ -345,7 +347,7 @@ Implement `List::basic_iterator` which will create `iterator` and `const_iterato
 ----
 `basic_iterator operator--(int)`
 
-**Description:** **Postfix Decrement.** Retreat the iterator so that it points to the previous node in the list. Return a copy of this iterator from before it was retreated.
+**Description:** **Postfix Decrement.** Retreat the iterator so that it points to the previous node in the list. Return a copy of the iterator from before it was retreated.
 
 **Complexity: O(1)**
 
@@ -406,7 +408,7 @@ We provide for you a `struct Card` in [`Cards.h`](./src/Cards.h) and ask that yo
 ----
 `List<Card> shuffle(const List<Card>& deck)`
 
-**Description:** Return a new list with the same cards in a shuffled order described below.
+**Description:** Return a new list with the same cards in a shuffled order described [here](#simple-shuffling-algorithm).
 
 **Complexity: O(`deck.size()`)**
 
