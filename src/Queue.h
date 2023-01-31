@@ -4,6 +4,10 @@
 
 template <typename T, typename Container = List<T>>
 class Queue {
+
+    template <typename T1, typename C1>
+    friend bool operator=(const Queue<T1, C1>&, const Queue<T1, C1>&);
+
     public:
         // Aliases for accessing data types outside of the class
         using container_type  = Container;
@@ -39,6 +43,6 @@ class Queue {
 };
 
 template <typename T, typename Container>
-bool operator==(const Queue<T, Container>& lhs, const Queue<T, Container>& rhs) { /* TODO */ }
+inline bool operator==(const Queue<T, Container>& lhs, const Queue<T, Container>& rhs) { /* TODO */ }
 
 #endif
