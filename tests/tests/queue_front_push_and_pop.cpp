@@ -2,7 +2,7 @@
 #include "Queue"
 #include <queue>
 
-TEST(queue_front) {
+TEST(queue_front_push_and_pop) {
     Typegen t;
 
     for (size_t i = 0; i < TEST_ITER; i++) {
@@ -12,8 +12,10 @@ TEST(queue_front) {
 
         Memhook mh;
 
+        // Populate both queues by pushing elements to them
         for (size_t i = 0; i < n; i++) {
             const int val = t.get<int>();
+            // Uses copy push
             gt.push(val);
             q.push(val);
         }
@@ -22,6 +24,7 @@ TEST(queue_front) {
         ASSERT_EQ(n, q.size());
 
         while (!gt.empty()) {
+            // Compare the fronts each time, then pop
             ASSERT_EQ(gt.front(), q.front());
             gt.pop();
             q.pop();
@@ -51,6 +54,7 @@ TEST(queue_front) {
         ASSERT_EQ(n, q.size());
 
         while (!gt.empty()) {
+            // Uses const reference front to compare
             ASSERT_EQ(gt.front(), qr.front());
             gt.pop();
             q.pop();

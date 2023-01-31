@@ -2,7 +2,7 @@
 #include "Queue"
 #include <queue>
 
-TEST(queue_front) {
+TEST(queue_back_and_push) {
     Typegen t;
 
     for (size_t i = 0; i < TEST_ITER; i++) {
@@ -36,6 +36,7 @@ TEST(queue_front) {
             const int val = t.get<int>();
             gt.push(val);
             q.push(val);
+            // Uses const reference back
             ASSERT_TRUE(gt.back(), qr.back());
         }
 

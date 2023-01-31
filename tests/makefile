@@ -14,7 +14,7 @@ RTEST_ASSIGNMENT_INCLUDE_DIR ?= include
 RTEST_ASSIGNMENT_UTILS_DIR ?= utils
 # Add more assignment specific utilities here
 # Although this will break when linking. Only include here if they are universally needed
-RTEST_ASSIGNMENT_OBJS := deck.o
+RTEST_ASSIGNMENT_OBJS :=
 
 all: run-all
 
