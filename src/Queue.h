@@ -1,3 +1,5 @@
+#ifndef QUEUE_H
+#define QUEUE_H
 #include "List.h"
 
 template <typename T, typename Container = List<T>>
@@ -5,10 +7,10 @@ class Queue {
     public:
         // Aliases for accessing data types outside of the class
         using container_type  = Container;
-        using value_type      = Container::value_type;
-        using size_type       = Container::size_type;
-        using reference       = Container::reference;
-        using const_reference = Container::const_reference;
+        using value_type      = typename Container::value_type;
+        using size_type       = typename Container::size_type;
+        using reference       = typename Container::reference;
+        using const_reference = typename Container::const_reference;
 
     private:
         Container c;
@@ -38,3 +40,5 @@ class Queue {
 
 template <typename T, typename Container>
 bool operator==(const Queue<T, Container>& lhs, const Queue<T, Container>& rhs) { /* TODO */ }
+
+#endif
