@@ -39,7 +39,6 @@ class Queue {
         void push(const value_type& value) { /* TODO */ }
         void push(value_type&& value) { /* TODO */ }
         void pop() { /* TODO */ }
-        void swap(Queue& other) noexcept { /* TODO */ }
 };
 
 template <typename T, typename Container>

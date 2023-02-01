@@ -9,14 +9,16 @@ TEST(queue_push_move_and_back) {
 
     for (size_t i = 0; i < TEST_ITER; i++) {
 
+        // Generate a reference vector
         const size_t n = t.range(0x999ULL);
         std::vector<int> gt(n);
         t.fill(gt.begin(), gt.end());
 
         {
             // Uses modified new to catch uninitialized memory
-            Queue<int>* q = new Queue<Box<int>>();;
+            Queue<Box<int>>* q = new Queue<Box<int>>();;
             
+            // Convert reference vector to Box types
             std::vector<Box<int>> boxes(n);
             for (size_t i = 0; i < n; i++) {
                 boxes[i] = gt[i];
@@ -25,8 +27,9 @@ TEST(queue_push_move_and_back) {
             Memhook mh;
 
             for (size_t i = 0; i < n; i++) {
+                // Uses push move
                 q->push(std::move(boxes[i]));
-                ASSERT_EQ(gt[i], q->back());
+                ASSERT_EQ(gt[i], *q->back());
             }
 
             // Ensure nodes have been allocated
