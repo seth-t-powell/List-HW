@@ -61,7 +61,7 @@ TEST(iterator) {
         citer it2 = std::move(it);
 
         while(it1 != ll.cend()) {
-            ASSERT_TRUE(it1++ == it2++);
+            ASSERT_EQ(true,it1++ == it2++);
             // link operator=(iterator &&)
             std::swap(it1, it2);
         }

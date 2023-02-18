@@ -16,8 +16,8 @@ TEST(build_deck) {
         size_t constexpr CARDS_IN_SUIT = 13;
         Rank constexpr RANK_START = ACE;
         while(it != deck.cend()) {
-            ASSERT_TRUE(it->suit == static_cast<Suit>(i / CARDS_IN_SUIT));
-            ASSERT_TRUE(it->rank == static_cast<Rank>(i % CARDS_IN_SUIT + RANK_START));
+            ASSERT_EQ(true,it->suit == static_cast<Suit>(i / CARDS_IN_SUIT));
+            ASSERT_EQ(true,it->rank == static_cast<Rank>(i % CARDS_IN_SUIT + RANK_START));
 
             it++;
             i++;
@@ -36,12 +36,12 @@ TEST(build_deck) {
         size_t constexpr CARDS_IN_SUIT = 4;
         Rank constexpr RANK_START = JACK;
         while(it != deck.cend()) {
-            ASSERT_TRUE(it->suit == static_cast<Suit>(i / CARDS_IN_SUIT));
+            ASSERT_EQ(true,it->suit == static_cast<Suit>(i / CARDS_IN_SUIT));
 
             if (it->rank != static_cast<Rank>(1)) {
-                ASSERT_TRUE(it->rank == static_cast<Rank>(i % CARDS_IN_SUIT + RANK_START - 1));
+                ASSERT_EQ(true,it->rank == static_cast<Rank>(i % CARDS_IN_SUIT + RANK_START - 1));
             } else {
-                ASSERT_TRUE(it->rank == static_cast<Rank>(i % CARDS_IN_SUIT + 1));
+                ASSERT_EQ(true,it->rank == static_cast<Rank>(i % CARDS_IN_SUIT + 1));
             }
 
             it++;

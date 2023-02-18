@@ -24,7 +24,7 @@ TEST(constructor_move) {
             // If you come up with an alternative imp, you may disable this
             // check
             ASSERT_EQ(0ULL, ll.size());
-            ASSERT_TRUE(ll.begin() == ll.end());
+            ASSERT_EQ(true,ll.begin() == ll.end());
             #endif
             
             // Ensure pointers are wired correctly
