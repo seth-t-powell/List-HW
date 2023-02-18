@@ -23,7 +23,7 @@ TEST(iterator) {
         iter * it = new (ITER_MEM) iter;
 
         char * p = reinterpret_cast<char *>(&(**it));
-        ASSERT_FALSE(VALID_MEM <= p && p <= VALID_MEM + sizeof(VALID_MEM));
+        ASSERT_EQ(false,VALID_MEM <= p && p <= VALID_MEM + sizeof(VALID_MEM));
 
         it->~iter();
     }

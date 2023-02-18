@@ -29,9 +29,9 @@ TEST(constructor_move) {
             
             // Ensure pointers are wired correctly
             // Should handle empty case & stack nodes properly
-            ASSERT_FALSE(++(--ll.end()) == ll_cpy.end());
-            ASSERT_FALSE(++(--ll.end()) == ll_cpy.begin());
-            ASSERT_FALSE(ll.end() == ll_cpy.begin());
+            ASSERT_EQ(false,++(--ll.end()) == ll_cpy.end());
+            ASSERT_EQ(false,++(--ll.end()) == ll_cpy.begin());
+            ASSERT_EQ(false,ll.end() == ll_cpy.begin());
 
             ASSERT_EQ(0ULL, mh.n_allocs());
             ASSERT_EQ(0ULL, mh.n_frees());
