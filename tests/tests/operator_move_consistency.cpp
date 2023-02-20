@@ -30,14 +30,14 @@ TEST(operator_move_consistency) {
             // If you come up with an alternative imp, you may disable this
             // check
             ASSERT_EQ(0ULL, ll.size());
-            ASSERT_TRUE(ll.begin() == ll.end());
+            ASSERT_EQ(true,ll.begin() == ll.end());
             #endif
 
             // Ensure pointers are wired correctly
             // Should handle empty case & stack nodes properly
-            ASSERT_FALSE(++(--ll.end()) == ll_cpy.end());
-            ASSERT_FALSE(++(--ll.end()) == ll_cpy.begin());
-            ASSERT_FALSE(ll.end() == ll_cpy.begin());
+            ASSERT_EQ(false,++(--ll.end()) == ll_cpy.end());
+            ASSERT_EQ(false,++(--ll.end()) == ll_cpy.begin());
+            ASSERT_EQ(false,ll.end() == ll_cpy.begin());
 
             ASSERT_EQ(gt_ll.size(), ll_cpy.size());
 

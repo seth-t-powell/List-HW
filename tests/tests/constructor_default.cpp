@@ -12,7 +12,7 @@ TEST(constructor_default) {
     ASSERT_EQ(0ULL, mh.n_allocs());
     ASSERT_EQ(0ULL, ll->size());
 
-    ASSERT_TRUE(ll->cbegin() == ll->cend());
+    ASSERT_EQ(true,ll->cbegin() == ll->cend());
 
     delete ll;
 }
