@@ -14,12 +14,12 @@ TEST(terminals) {
     {
         List<int> * ll = new List<int>();
 
-        ASSERT_TRUE(ll->begin() == ll->end());
-        ASSERT_TRUE(ll->cbegin() == ll->cend());
+        ASSERT_EQ(true,ll->begin() == ll->end());
+        ASSERT_EQ(true,ll->cbegin() == ll->cend());
 
         List<int> const & const_ll = *ll;
 
-        ASSERT_TRUE(const_ll.begin() == const_ll.end());
+        ASSERT_EQ(true,const_ll.begin() == const_ll.end());
 
         delete ll; 
     }

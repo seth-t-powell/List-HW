@@ -23,7 +23,7 @@ TEST(iterator) {
         iter * it = new (ITER_MEM) iter;
 
         char * p = reinterpret_cast<char *>(&(**it));
-        ASSERT_FALSE(VALID_MEM <= p && p <= VALID_MEM + sizeof(VALID_MEM));
+        ASSERT_EQ(false,VALID_MEM <= p && p <= VALID_MEM + sizeof(VALID_MEM));
 
         it->~iter();
     }
@@ -61,7 +61,7 @@ TEST(iterator) {
         citer it2 = std::move(it);
 
         while(it1 != ll.cend()) {
-            ASSERT_TRUE(it1++ == it2++);
+            ASSERT_EQ(true,it1++ == it2++);
             // link operator=(iterator &&)
             std::swap(it1, it2);
         }
