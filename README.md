@@ -25,7 +25,7 @@ There are several strategies for implementing linked lists. While any strategy c
 
 - [Implement the List's Iterator](#implement-the-lists-iterator)
 
-- [Shuffling Cards (Application of Doubly Linked List)](#shuffling-cards-application-of-doubly-linked-list)
+- [Implementing a Queue (Application of Doubly Linked List)](#implementing-a-queue-application-of-doubly-linked-list)
 
 [Incremental Testing](#incremental-testing)
 
@@ -409,40 +409,94 @@ Thus, the end loops back to the beginning and the beginning back to the end. **Y
 - [Tutorials Point Double Linked List](https://www.tutorialspoint.com/data_structures_algorithms/doubly_linked_list_algorithm.htm)
 - [Wikipedia Doubly Linked List](https://en.wikipedia.org/wiki/Doubly_linked_list)
 
-### Shuffling Cards (Application of Doubly Linked List)
+### Implementing a Queue (Application of Doubly Linked List)
 
-A standard playing card has two main pieces of information:
-1. It has a Suit (Spades, Diamonds, Clubs, or Hearts)
-2. It has a Number (2 - 10 inclusive) or a Face (Ace, Jack, Queen, King)
-   - In many games the order is: Ace, 2, 3, 4, 5, 6, 7, 8, 9, 10, Jack, Queen, and King
+One of the big applications for a linked list is designing other ADTs such as a queue or a stack. For this assignment, you are tasked with implementing a queue using the List class you defined. Keep in mind, that queues are FIFO (First in first out) structures, so you should design it accordingly. The implementation is mostly up to you, as long as the queue is functional.
 
-We provide for you a `struct Card` in [`Cards.h`](./src/Cards.h) and ask that you implement the following two functions in [`Cards.cpp`](./src/Cards.cpp):
+We provide for you a `class Queue` in [`Queue.h`](./src/Queue.h) and ask that you implement the following functions for the queue:
 
 ----
-`List<Card> buildDeck(std::ifstream file)`
+`reference front()`
 
-**Description:** Read cards from the file and add them to a `List<Card>` in the order that they are read.
+**Description:** Returns a reference to the current value at the **front** of the queue. This should be the oldest value in the queue. May use the underlying function of the container `c`.
 
-**Complexity: O(n)**
+**Complexity: O(1)**
 
-**Used in:** `build_deck`, `shuffle`
-
-----
-`List<Card> shuffle(const List<Card>& deck)`
-
-**Description:** Return a new list with the same cards in a shuffled order described [below](#simple-shuffling-algorithm).
-
-**Complexity: O(`deck.size()`)**
-
-**Used in:** `shuffle`
+**Used in:** `queue_front_push_and_pop`
 
 ----
-#### Simple Shuffling Algorithm
-1. Create a new empty deck to which we will add cards as we shuffle them. We henceforth refer to this as the shuffled deck.
-2. Iterate over the `deck`, and for each card, flip a coin. The coin flip must be generated using the `rand221` function in `deck.cpp` which is analogous to the [standard C function `rand()`](https://www.cplusplus.com/reference/cstdlib/rand/).
-3. If the result is Heads (even), add the card to the front of the shuffled deck; otherwise, add it to the back of the shuffled deck.
-4. The `deck` has been completly shuffled when each card has been added. Return this shuffled deck from the `shuffle` function.
+`const_reference front()`
 
+**Description:** Returns a const reference to the current value at the **front** of the queue. This should be the oldest value in the queue. May use the underlying function of the container `c`.
+
+**Complexity: O(1)**
+
+**Used in:** `queue_front_push_and_pop`
+
+----
+`reference back()`
+
+**Description:** Returns a reference to the current value at the **back** of the queue. This should be the most recently added value in the queue. May use the underlying function of the container `c`.
+
+**Complexity: O(1)**
+
+**Used in:** `queue_back_and_push`, `queue_push_move`
+
+----
+`const_reference back()`
+
+**Description:** Returns a const reference to the current value at the **back** of the queue. This should be the most recently added value in the queue. May use the underlying function of the container `c`.
+
+**Complexity: O(1)**
+
+**Used in:** `queue_back_and_push`
+
+----
+`bool empty()`
+
+**Description:** Returns true if the queue is empty, otherwise returns false. Can use the underlying function of the container `c`.
+
+**Complexity: O(1)**
+
+**Used in:** `queue_push_pop_and_empty`
+
+----
+`size_type size()`
+
+**Description:** Returns the number of elements currently in the queue. Can use the underlying function of the container `c`.
+
+**Complexity: O(1)**
+
+**Used in:** `queue_back_and_push`, `queue_push_pop_and_empty`, `queue_push_move`, `queue_front_push_and_pop`, `queue_equality_operator`
+
+----
+`void push(const value_type& value)`
+
+**Description:** Adds a copy of `value` to the end of the queue. This should be the last of the current elements to be removed.
+
+**Complexity: O(1)**
+
+**Used in:** `queue_back_and_push`, `queue_push_pop_and_empty`, `queue_front_push_and_pop`, `queue_equality_operator`
+
+----
+`void push(value_type&& value)`
+
+**Description:** Adds `value` to the end of the queue using move semantics. This should be the last of the current elements to be removed.
+
+**Complexity: O(1)**
+
+**Used in:** `queue_push_move`
+
+----
+`void pop()`
+
+**Description:** Removes the first element of the queue. This should be the current oldest element in the queue.
+
+**Complexity: O(1)**
+
+**Used in:** `queue_push_pop_and_empty`, `queue_front_push_and_pop`
+
+----
 
 ## Incremental Testing
  
@@ -488,9 +542,9 @@ At this point, the necessary foundation should exist for you to approach the rem
 - `operator_copy_consistency` requires `insert`, `erase`, and the copy operator. This serves as a stress test to assert the copy operator leaves the objects in a valid state. The copy operator is also tested independently of `insert` and `erase` in `operator_copy`.
 - `operator_move_consistency` requires `insert`, `erase`, and the move operator. Same rationale.
  
-### 4. Finish the `Card.cpp` functions
+### 4. Finish the `Queue.h` functions
  
-`List` is utilized in `Card.cpp` and assumed to be in working condition. The `shuffle` test relies on the `build_deck` method.
+`List` is utilized in `Queue.h` and assumed to be in working condition. You should utilize the functions implemented in `List.h` to implement the queue ADT. It is recommended to do the equality operator last.
 
 ## Run Tests
 **First consult this guide: [`tests/README.md`](./tests/README.md)**
@@ -527,6 +581,5 @@ The first command builds the tests, the next enters the folder where the tests w
 
 ## Turn In
 Submit the following files **and no other files** to Gradescope:
-- [ ] [`Cards.cpp`](src/Cards.cpp)
-- [ ] [`Cards.h`](src/Cards.h) - You may not have changed this file and that's fine
+- [ ] [`Queue.h`](src/Queue.h)
 - [ ] [`List.h`](src/List.h)
