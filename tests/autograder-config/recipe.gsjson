@@ -206,6 +206,6 @@
             "points": 2,
             "time_limit": 35000,
             "long_name": "Test 22 - queue_push_pop_and_empty"
-        },
+        }
     ]
 }
