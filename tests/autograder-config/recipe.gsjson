@@ -3,7 +3,7 @@
         {
             "name":"terminals",
             "cmds": [
-                "make -C tests SRC_DIR=../../submission -j12 run/terminals"
+                "make -C tests RTEST_SRC_DIR=../../submission -j12 run/terminals"
             ],
             "points": 4,
             "time_limit": 5000,
@@ -12,7 +12,7 @@
         {
             "name":"iterator",
             "cmds": [
-                "make -C tests SRC_DIR=../../submission -j12 run/iterator"
+                "make -C tests RTEST_SRC_DIR=../../submission -j12 run/iterator"
             ],
             "points": 4,
             "time_limit": 5000,
@@ -21,7 +21,7 @@
         {
             "name":"constructor_default_inserted",
             "cmds": [
-                "make -C tests SRC_DIR=../../submission -j12 run/constructor_default_inserted"
+                "make -C tests RTEST_SRC_DIR=../../submission -j12 run/constructor_default_inserted"
             ],
             "points": 4,
             "time_limit": 5000,
@@ -30,7 +30,7 @@
         {
             "name":"constructor_default",
             "cmds": [
-                "make -C tests SRC_DIR=../../submission -j12 run/constructor_default"
+                "make -C tests RTEST_SRC_DIR=../../submission -j12 run/constructor_default"
             ],
             "points": 4,
             "time_limit": 5000,
@@ -39,7 +39,7 @@
         {
             "name":"constructor_insert_copies",
             "cmds": [
-                "make -C tests SRC_DIR=../../submission -j12 run/constructor_insert_copies"
+                "make -C tests RTEST_SRC_DIR=../../submission -j12 run/constructor_insert_copies"
             ],
             "points": 4,
             "time_limit": 5000,
@@ -48,7 +48,7 @@
         {
             "name":"constructor_copy",
             "cmds": [
-                "make -C tests SRC_DIR=../../submission -j12 run/constructor_copy"
+                "make -C tests RTEST_SRC_DIR=../../submission -j12 run/constructor_copy"
             ],
             "points": 4,
             "time_limit": 10000,
@@ -57,7 +57,7 @@
         {
             "name":"operator_copy",
             "cmds": [
-                "make -C tests SRC_DIR=../../submission -j12 run/operator_copy"
+                "make -C tests RTEST_SRC_DIR=../../submission -j12 run/operator_copy"
             ],
             "points": 6,
             "time_limit": 5000,
@@ -66,7 +66,7 @@
         {
             "name":"operator_copy_consistency",
             "cmds": [
-                "make -C tests SRC_DIR=../../submission -j12 run/operator_copy_consistency"
+                "make -C tests RTEST_SRC_DIR=../../submission -j12 run/operator_copy_consistency"
             ],
             "points": 8,
             "time_limit": 25000,
@@ -75,7 +75,7 @@
         {
             "name":"constructor_move",
             "cmds": [
-                "make -C tests SRC_DIR=../../submission -j12 run/constructor_move"
+                "make -C tests RTEST_SRC_DIR=../../submission -j12 run/constructor_move"
             ],
             "points": 4,
             "time_limit": 5000,
@@ -84,7 +84,7 @@
         {
             "name":"operator_move",
             "cmds": [
-                "make -C tests SRC_DIR=../../submission -j12 run/operator_move"
+                "make -C tests RTEST_SRC_DIR=../../submission -j12 run/operator_move"
             ],
             "points": 6,
             "time_limit": 5000,
@@ -93,7 +93,7 @@
         {
             "name":"operator_move_consistency",
             "cmds": [
-                "make -C tests SRC_DIR=../../submission -j12 run/operator_move_consistency"
+                "make -C tests RTEST_SRC_DIR=../../submission -j12 run/operator_move_consistency"
             ],
             "points": 6,
             "time_limit": 25000,
@@ -102,7 +102,7 @@
         {
             "name":"clear_and_empty",
             "cmds": [
-                "make -C tests SRC_DIR=../../submission -j12 run/clear_and_empty"
+                "make -C tests RTEST_SRC_DIR=../../submission -j12 run/clear_and_empty"
             ],
             "points": 4,
             "time_limit": 5000,
@@ -111,7 +111,7 @@
         {
             "name":"insert",
             "cmds": [
-                "make -C tests SRC_DIR=../../submission -j12 run/insert"
+                "make -C tests RTEST_SRC_DIR=../../submission -j12 run/insert"
             ],
             "points": 8,
             "time_limit": 5000,
@@ -120,7 +120,7 @@
         {
             "name":"erase",
             "cmds": [
-                "make -C tests SRC_DIR=../../submission -j12 run/erase"
+                "make -C tests RTEST_SRC_DIR=../../submission -j12 run/erase"
             ],
             "points": 8,
             "time_limit": 25000,
@@ -129,7 +129,7 @@
         {
             "name":"push_back",
             "cmds": [
-                "make -C tests SRC_DIR=../../submission -j12 run/push_back"
+                "make -C tests RTEST_SRC_DIR=../../submission -j12 run/push_back"
             ],
             "points": 4,
             "time_limit": 5000,
@@ -138,7 +138,7 @@
         {
             "name":"pop_back",
             "cmds": [
-                "make -C tests SRC_DIR=../../submission -j12 run/pop_back"
+                "make -C tests RTEST_SRC_DIR=../../submission -j12 run/pop_back"
             ],
             "points": 4,
             "time_limit": 35000,
@@ -147,7 +147,7 @@
         {
             "name":"push_front",
             "cmds": [
-                "make -C tests SRC_DIR=../../submission -j12 run/push_front"
+                "make -C tests RTEST_SRC_DIR=../../submission -j12 run/push_front"
             ],
             "points": 4,
             "time_limit": 5000,
@@ -156,7 +156,7 @@
         {
             "name":"pop_front",
             "cmds": [
-                "make -C tests SRC_DIR=../../submission -j12 run/pop_front"
+                "make -C tests RTEST_SRC_DIR=../../submission -j12 run/pop_front"
             ],
             "points": 4,
             "time_limit": 35000,
@@ -165,7 +165,7 @@
         {
             "name":"queue_back_and_push",
             "cmds": [
-                "make -C tests SRC_DIR=../../submission -j12 run/queue_back_and_push"
+                "make -C tests RTEST_SRC_DIR=../../submission -j12 run/queue_back_and_push"
             ],
             "points": 2,
             "time_limit": 35000,
@@ -174,7 +174,7 @@
         {
             "name":"queue_equality_operator",
             "cmds": [
-                "make -C tests SRC_DIR=../../submission -j12 run/queue_equality_operator"
+                "make -C tests RTEST_SRC_DIR=../../submission -j12 run/queue_equality_operator"
             ],
             "points": 2,
             "time_limit": 35000,
@@ -183,7 +183,7 @@
         {
             "name":"queue_front_push_and_pop",
             "cmds": [
-                "make -C tests SRC_DIR=../../submission -j12 run/queue_front_push_and_pop"
+                "make -C tests RTEST_SRC_DIR=../../submission -j12 run/queue_front_push_and_pop"
             ],
             "points": 2,
             "time_limit": 35000,
@@ -192,7 +192,7 @@
         {
             "name":"queue_push_move",
             "cmds": [
-                "make -C tests SRC_DIR=../../submission -j12 run/queue_push_move"
+                "make -C tests RTEST_SRC_DIR=../../submission -j12 run/queue_push_move"
             ],
             "points": 2,
             "time_limit": 35000,
@@ -201,7 +201,7 @@
         {
             "name":"queue_push_pop_and_empty",
             "cmds": [
-                "make -C tests SRC_DIR=../../submission -j12 run/queue_push_pop_and_empty"
+                "make -C tests RTEST_SRC_DIR=../../submission -j12 run/queue_push_pop_and_empty"
             ],
             "points": 2,
             "time_limit": 35000,
