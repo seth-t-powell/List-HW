@@ -95,7 +95,7 @@
             "cmds": [
                 "make -C tests SRC_DIR=../../submission -j12 run/operator_move_consistency"
             ],
-            "points": 8,
+            "points": 6,
             "time_limit": 25000,
             "long_name": "Test 10 - operator_move_consistency"
         },
@@ -163,22 +163,49 @@
             "long_name": "Test 17 - pop_front"
         },
         {
-            "name":"build_deck",
+            "name":"queue_back_and_push",
             "cmds": [
-                "make -C tests SRC_DIR=../../submission -j12 run/build_deck"
+                "make -C tests SRC_DIR=../../submission -j12 run/queue_back_and_push"
             ],
-            "points": 4,
-            "time_limit": 5000,
-            "long_name": "Test 18 - build_deck"
+            "points": 2,
+            "time_limit": 35000,
+            "long_name": "Test 18 - queue_back_and_push"
         },
         {
-            "name":"shuffle",
+            "name":"queue_equality_operator",
             "cmds": [
-                "make -C tests SRC_DIR=../../submission -j12 run/shuffle"
+                "make -C tests SRC_DIR=../../submission -j12 run/queue_equality_operator"
             ],
-            "points": 4,
-            "time_limit": 5000,
-            "long_name": "Test 19 - shuffle"
-        }
+            "points": 2,
+            "time_limit": 35000,
+            "long_name": "Test 19 - queue_equality_operator"
+        },
+        {
+            "name":"queue_front_push_and_pop",
+            "cmds": [
+                "make -C tests SRC_DIR=../../submission -j12 run/queue_front_push_and_pop"
+            ],
+            "points": 2,
+            "time_limit": 35000,
+            "long_name": "Test 20 - queue_front_push_and_pop"
+        },
+        {
+            "name":"queue_push_move",
+            "cmds": [
+                "make -C tests SRC_DIR=../../submission -j12 run/queue_push_move"
+            ],
+            "points": 2,
+            "time_limit": 35000,
+            "long_name": "Test 21 - queue_push_move"
+        },
+        {
+            "name":"queue_push_pop_and_empty",
+            "cmds": [
+                "make -C tests SRC_DIR=../../submission -j12 run/queue_push_pop_and_empty"
+            ],
+            "points": 2,
+            "time_limit": 35000,
+            "long_name": "Test 22 - queue_push_pop_and_empty"
+        },
     ]
 }

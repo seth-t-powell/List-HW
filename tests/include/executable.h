@@ -16,8 +16,6 @@
 #include "List.h"
 // Additional iterator method
 #include "pace.h"
-// Override random generator for testing
-#include "deck.h"
 
 #define TEST(name) UTEST(LIST, name)
 
