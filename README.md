@@ -497,6 +497,15 @@ We provide for you a `class Queue` in [`Queue.h`](./src/Queue.h) and ask that yo
 **Used in:** `queue_push_pop_and_empty`, `queue_front_push_and_pop`
 
 ----
+`inline bool operator==(const Queue<T, Container>& lhs, const Queue<T, Container>& rhs)`
+
+**Description:** Determines if 2 queues are equivalent. If the 2 queues have different sizes, they are not equal. Should compare the individual elements of the underlying container.
+
+**Complexity: O(n)**
+
+**Used in:** `queue_equality_operator`
+
+----
 
 ## Incremental Testing
  
