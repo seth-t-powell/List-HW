@@ -107,7 +107,7 @@ TEST(queue_equality_operator) {
             if (j != diff_idx) {
                 q2.push(gt_1[j]);
             } else {
-                const int x = t.get<int>();
+                const int x = gt_1[j] + 1;
                 q2.push(x);
             }
         }
