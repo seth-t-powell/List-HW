@@ -24,8 +24,8 @@ TEST(queue_equality_operator) {
 
             // Populate the queues with the refernce vector data
             for (size_t j = 0; j < n; j++) {
-                q1.push(gt_1[i]);
-                q2.push(gt_1[i]);
+                q1.push(gt_1[j]);
+                q2.push(gt_1[j]);
             }
 
             // Check that the queues were properly setup
@@ -48,7 +48,7 @@ TEST(queue_equality_operator) {
 
             // Populate the queue with the reference vector data
             for (size_t j = 0; j < n; j++) {
-                q3.push(gt_2[i]);
+                q3.push(gt_2[j]);
             }
 
             // Ensure that the queue was properly setup
@@ -73,7 +73,7 @@ TEST(queue_equality_operator) {
 
             // Populate the queue with the smaller reference vector
             for (size_t j = 0; j < n_smaller; j++) {
-                q4.push(gt_3[i]);
+                q4.push(gt_3[j]);
             }
 
             // Ensure the queue was properly setup
@@ -93,7 +93,7 @@ TEST(queue_equality_operator) {
         std::vector<int> gt_1(n);
         t.fill(gt_1.begin(), gt_1.end());
 
-        // Checking two almsot equivalent queues
+        // Checking two almost equivalent queues
         Queue<int> q1;
         Queue<int> q2;
 
@@ -102,10 +102,10 @@ TEST(queue_equality_operator) {
 
         // Populate the queues with the reference vector data
         for (size_t j = 0; j < n; j++) {
-            q1.push(gt_1[i]);
+            q1.push(gt_1[j]);
 
             if (j != diff_idx) {
-                q2.push(gt_1[i]);
+                q2.push(gt_1[j]);
             } else {
                 const int x = t.get<int>();
                 q2.push(x);
