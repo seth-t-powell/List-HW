@@ -87,7 +87,7 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 
 **Complexity: O(`other.size()`)**
 
-**Used in:** `constructor_copy`, `build_deck`, `shuffle`
+**Used in:** `constructor_copy`
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/list
 
@@ -146,7 +146,7 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 
 **Complexity: O(1)**
 
-**Used in:** `terminals`, `shuffle`
+**Used in:** `terminals`
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/front
 
@@ -157,7 +157,7 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 
 **Complexity: O(1)**
 
-**Used in:** `terminals`, `shuffle`
+**Used in:** `terminals`
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/back
 
@@ -278,7 +278,7 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 
 **Complexity: O(1)**
 
-**Used in:** `pop_back`, `shuffle`
+**Used in:** `pop_back`
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/pop_back
 
@@ -300,7 +300,7 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 
 **Complexity: O(1)**
 
-**Used in:** `pop_front`, `shuffle`
+**Used in:** `pop_front`
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/pop_front
 
@@ -337,7 +337,7 @@ Implement `List::basic_iterator` which will create `iterator` and `const_iterato
 
 **Complexity: O(1)**
 
-**Used in:** `iterator`, `build_deck`
+**Used in:** `iterator`
 
 ----
 `basic_iterator& operator++()`
