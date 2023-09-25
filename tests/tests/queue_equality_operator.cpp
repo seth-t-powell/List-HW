@@ -35,7 +35,12 @@ TEST(queue_equality_operator) {
         }
 
         // The queues should have the same data
-        ASSERT_EQ(true, q1 == q2);
+        {
+            Memhook mh;
+            ASSERT_EQ(true, q1 == q2);
+            // Check that comparison does not allocate extra memory
+            ASSERT_EQ(0ULL, mh.n_allocs());
+        }
 
         // Generate a different reference vector
         std::vector<int> gt_2(n);
@@ -57,8 +62,13 @@ TEST(queue_equality_operator) {
         }
 
         // The queues should be different
-        ASSERT_EQ(false, q1 == q3);
-        ASSERT_EQ(false, q3 == q2);
+        {
+            Memhook mh;
+            ASSERT_EQ(false, q1 == q3);
+            ASSERT_EQ(false, q3 == q2);
+            // Check that comparison does not allocate extra memory
+            ASSERT_EQ(0ULL, mh.n_allocs());
+        }
 
         // Comparisons between queues of different sizes should be false
         // Generate a smaller reference vector
@@ -82,8 +92,13 @@ TEST(queue_equality_operator) {
         }
 
         // Queues of different sizes should always be false
-        ASSERT_EQ(false, q1 == q4);
-        ASSERT_EQ(false, q4 == q3);
+        {
+            Memhook mh;
+            ASSERT_EQ(false, q1 == q4);
+            ASSERT_EQ(false, q4 == q3);
+            // Check that comparison does not allocate extra memory
+            ASSERT_EQ(0ULL, mh.n_allocs());
+        }
     }
     
     // Make sure that almost equal queues aren't equal
@@ -113,6 +128,11 @@ TEST(queue_equality_operator) {
         }
 
         // The queues should not be equivalent if 1 element is different
-        ASSERT_EQ(false, q1 == q2);
+        {
+            Memhook mh;
+            ASSERT_EQ(false, q1 == q2);
+            // Check that comparison does not allocate extra memory
+            ASSERT_EQ(0ULL, mh.n_allocs());
+        }
     }
 }
