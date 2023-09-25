@@ -1,11 +1,8 @@
-List Oral Report
+List Questions
 ================
+The following questions are some additional questions you can use to see your understanding of the list as well as other implementations of the code.
 
-For the list report, you will be asked three questions to test your conceptual understanding of the assignment. Some questions will expand on the concepts you learned. You will answer orally. We are expecting responses to be precise and concise. 1-3 sentences about each are sufficient. We may ask clarifying questions. Be prepared. (See the list of questions below.) Since we have many reports to complete in a single lab period, the report will be limited to two minutes.
-
-The oral reports will be scored as "exemplary" (5 points), "mostly sufficient," "incomplete," or "insufficient" (0 points). The point value for "mostly sufficient" and "incomplete" will depend on the difficulty of the question. The points will be awarded in the programming assignment category.
-
-Questions seven and five require you to present your code.
+In previous semesters, this was used for a report conducted in lab - that is no longer used at this point. This REPORT.md file is not particularly for any grade, just if you would like to explore some applications or possible questions using the structure implemented.
 
 Question 1
 ----------
@@ -115,7 +112,7 @@ The goal of this question is to get you thinking about alternate implementations
 Question 9
 ----------
 
-During the report for `assignment-vector` you were provided an example of iterator invalidation. That is when using `Vector`, an `Vector` iterator would point to invalid memory if an operation was performed to reallocate the underlying array. Now consider your implementation of `List`. Which of the following `List` methods *can* result in iterator invalidation? For each method that can result in iterator invalidation, describe the *conditions under which this occurs*.
+In the REPORT.md for `assignment-vector` you were provided an example of iterator invalidation. That is when using `Vector`, an `Vector` iterator would point to invalid memory if an operation was performed to reallocate the underlying array. Now consider your implementation of `List`. Which of the following `List` methods *can* result in iterator invalidation? For each method that can result in iterator invalidation, describe the *conditions under which this occurs*.
 
 - `push_back`
 - `erase`
