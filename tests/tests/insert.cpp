@@ -22,7 +22,7 @@ TEST(insert) {
             auto gt_pos = gt_ll.cbegin();
             auto pos = ll->cbegin();
 
-            for(size_t i = 0; i < 5; i++) {
+            for(size_t i = 0; i < 20; i++) {
                 size_t steps = t.range(gt_ll.size() + 1);
                 int value = t.get<int>();
 
@@ -62,16 +62,23 @@ TEST(insert) {
         {
             List<Box<int>> ll;
 
-            auto pos = ll.cbegin();
-            bool walk_reversed = false;
+            std::list<int> gt_ll;
 
-            for(size_t i = 0; i < n; i++) {
-                size_t steps = t.range(i + 1);
+            bool gt_walk_reversed = false,
+                 walk_reversed = false;
+            
+            auto gt_pos = gt_ll.cbegin();
+            auto pos = ll.cbegin();
+
+            for(size_t i = 0; i < 20; i++) {
+                size_t steps = t.range(gt_ll.size() + 1);
                 int value = t.get<int>();
                 Box<int> newBox = value;
 
                 pos = pace(ll, pos, steps, walk_reversed);
+                gt_pos = pace(gt_ll, gt_pos, steps, gt_walk_reversed);
 
+                gt_ll.insert(gt_pos, newBox);
                 Memhook mh;
                 auto it_val = ll.insert(pos, std::move(newBox));
 
@@ -80,6 +87,20 @@ TEST(insert) {
                 ASSERT_EQ(value, **it_val);
                 // only should allocate 1 node on the heap
                 ASSERT_EQ(1ULL, mh.n_allocs());
+
+                // lists should be consistent
+                {
+                    ASSERT_EQ(gt_ll.size(), ll.size());
+
+                    auto gt_it = gt_ll.cbegin();
+                    auto it = ll.cbegin();
+                    
+                    while(gt_it != gt_ll.cend())
+                        ASSERT_EQ_(*(gt_it++), *(it++), "An inconsistency was found when iterating forward");
+
+                    while(gt_it != gt_ll.cbegin())
+                        ASSERT_EQ_(*(--gt_it), *(--it),  "An inconsistency was found when iterating backward");
+                }
             }
         }
     }
