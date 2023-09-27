@@ -120,7 +120,7 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 
 **Complexity: O(max(`size()`, `other.size()`))**
 
-**Used in:** `operator_copy`
+**Used in:** `operator_copy`, `operator_copy_consistency`
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/operator%3D
 
@@ -252,7 +252,7 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 ----
 `iterator erase(const_iterator pos)`
 
-**Description:** Removes the element at `pos`.
+**Description:** Removes the element at `pos` and returns an iterator that points to the element following the erased item.
 
 **Complexity: O(1)**
 
