@@ -25,6 +25,10 @@ TEST(erase) {
                 
                 pos =  pace(ll, pos, steps, walk_reversed);
                 gt_pos = pace(gt_ll, gt_pos, steps, gt_walk_reversed);
+
+                auto after_erased = pos;
+                ++after_erased;
+
                 {
                     Memhook mh;
 
@@ -39,6 +43,10 @@ TEST(erase) {
                 // Return value should point to the element following the erased item
                 if(gt_pos != gt_ll.end())
                     ASSERT_EQ(*gt_pos, *pos);
+
+                // Check that the returned iterator is the same as an iterator the
+                // next from the previous iterator
+                ASSERT_TRUE(after_erased == pos);
 
                 // lists should be consistent
                 {
