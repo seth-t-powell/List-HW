@@ -15,6 +15,8 @@ class Queue {
         using size_type       = typename Container::size_type;
         using reference       = typename Container::reference;
         using const_reference = typename Container::const_reference;
+        using iterator        = typename Container::iterator;
+        using const_iterator  = typename Container::const_iterator;
 
     private:
         Container c;
