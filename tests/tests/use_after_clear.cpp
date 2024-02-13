@@ -9,59 +9,48 @@ TEST(use_after_clear) {
         
         const int value = t.get<int>();
 
-        List<int> * ll = new List<int>(sz, value);
+        List<int> ll(sz, value);
 
-        ll->clear();
+        ll.clear();
 
-        std::list<int> shadow;
+        std::list<int> gt_ll;
+
+        // 20 is chose arbitrarily
+        for (size_t j = 0; j < 20; ++j) {
+            int next_push = t.get<int>();
+            if (i & 1) {
+                ll.push_front(next_push);
+                gt_ll.push_front(next_push);
+            } else {
+                ll.push_back(next_push);
+                gt_ll.push_back(next_push);
+            }
+        }
+
 
         for (size_t j = 0; j < 20; ++j) {
             int next_push = t.get<int>();
             if (i & 1) {
-                ll->push_front(next_push);
-                shadow.push_front(next_push);
+                ll.push_back(next_push);
+                gt_ll.push_back(next_push);
             } else {
-                ll->push_back(next_push);
-                shadow.push_back(next_push);
+                ll.push_front(next_push);
+                gt_ll.push_front(next_push);
             }
         }
 
+        // lists should be consistent
+        {
+            ASSERT_EQ(gt_ll.size(), ll.size());
 
-        for (size_t j = 0; j < 20; ++j) {
-            int next_push = t.get<int>();
-            if (i & 1) {
-                ll->push_back(next_push);
-                shadow.push_back(next_push);
-            } else {
-                ll->push_front(next_push);
-                shadow.push_front(next_push);
-            }
+            auto gt_it = gt_ll.begin();
+            auto it = ll.begin();
+
+            while(gt_it != gt_ll.end())
+                ASSERT_EQ_(*gt_it++, *it++, "An inconsistency was found when iterating forward");
+
+            while(gt_it != gt_ll.end())
+                ASSERT_EQ_(*--gt_it, *--it, "An inconsistency was found when iterating backward");
         }
-
-        // Verify that list contents are correct
-
-        ASSERT_EQ(ll->size(), shadow.size());
-
-        auto test_it = ll->begin();
-        auto std_it = shadow.begin();
-        for (; test_it != ll->end() && std_it != shadow.end(); ++test_it, ++std_it) {
-            ASSERT_EQ_(*std_it, *test_it, "Inconsistency iterating forward.");
-        }
-
-        // If only one iterator has reached the end
-        bool iters_different = (test_it == ll->end()) ^ (std_it == shadow.end());
-        ASSERT_TRUE(!iters_different);
-
-        for (; --test_it, --std_it, true;) {
-            ASSERT_EQ_(*std_it, *test_it, "Inconsistency iterating backward.");
-            if (test_it == ll->begin() || std_it == shadow.begin()) {
-                break;
-            }
-        }
-
-        iters_different = (test_it == ll->begin()) ^ (std_it == shadow.begin());
-        ASSERT_TRUE(!iters_different);
-
-        delete ll;
     }
 }
