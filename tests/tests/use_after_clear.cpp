@@ -45,10 +45,21 @@ TEST(use_after_clear) {
         auto test_it = ll->begin();
         auto std_it = shadow.begin();
         for (; test_it != ll->end() && std_it != shadow.end(); ++test_it, ++std_it) {
-            ASSERT_EQ(*std_it, *test_it);
+            ASSERT_EQ_(*std_it, *test_it, "Inconsistency iterating forward.");
         }
+
         // If only one iterator has reached the end
         bool iters_different = (test_it == ll->end()) ^ (std_it == shadow.end());
+        ASSERT_TRUE(!iters_different);
+
+        for (; --test_it, --std_it, true;) {
+            ASSERT_EQ_(*std_it, *test_it, "Inconsistency iterating backward.");
+            if (test_it == ll->begin() || std_it == shadow.begin()) {
+                break;
+            }
+        }
+
+        iters_different = (test_it == ll->begin()) ^ (std_it == shadow.begin());
         ASSERT_TRUE(!iters_different);
 
         delete ll;
