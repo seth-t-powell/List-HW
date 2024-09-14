@@ -42,6 +42,10 @@ TEST(iterator) {
         auto it = ll.cbegin();
         auto gt_it = gt_ll.cbegin();
 
+        auto itc = ++ll.cbegin();
+        ASSERT_EQ(true, it != itc);
+        ASSERT_EQ(false, it != --itc);
+
         while(gt_it != gt_ll.cend())
             ASSERT_EQ(*(gt_it++), *(it++));
         
@@ -62,6 +66,7 @@ TEST(iterator) {
 
         while(it1 != ll.cend()) {
             ASSERT_EQ(true,it1++ == it2++);
+            ASSERT_EQ(false, it1 != it2);
             // link operator=(iterator &&)
             std::swap(it1, it2);
         }
