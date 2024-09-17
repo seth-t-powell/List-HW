@@ -58,7 +58,7 @@ TEST(erase) {
                     while(gt_it != gt_ll.end())
                         ASSERT_EQ_(*gt_it++, *it++, "An inconsistency was found when iterating forward");
                     
-                    while(gt_it != gt_ll.end())
+                    while(gt_it != gt_ll.begin())
                         ASSERT_EQ_(*--gt_it, *--it, "An inconsistency was found when iterating backward");
                 }
             }

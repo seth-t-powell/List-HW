@@ -13,7 +13,7 @@ TEST(push_front) {
         t.fill(gt.begin(), gt.end());
 
         {
-            // uses modified new to catch uninitalized memory
+            // uses modified new to catch uninitialized memory
             List<int> * ll = new List<int>();
 
             Memhook mh;
@@ -46,7 +46,7 @@ TEST(push_front) {
         }
 
         {
-            // uses modified new to catch uninitalized memory
+            // uses modified new to catch uninitialized memory
             List<Box<int>> * ll = new List<Box<int>>();
 
             std::vector<Box<int>> boxes(n);
