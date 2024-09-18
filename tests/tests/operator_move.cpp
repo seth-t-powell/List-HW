@@ -45,7 +45,7 @@ TEST(operator_move) {
             ASSERT_EQ(prev_n, mh.n_frees());
 
             {
-                // Check consistancy of copy
+                // Check consistency of copy
                 auto it = ll_cpy.cbegin();
                 auto gt_it = gt_ll.cbegin();
 
@@ -63,7 +63,7 @@ TEST(operator_move) {
             ASSERT_EQ(0ULL, mutilate_mh.n_frees());
 
             {
-                // Check consistancy of copy
+                // Check consistency of copy
                 auto it = ll_cpy.cbegin();
                 auto gt_it = gt_ll.cbegin();
 

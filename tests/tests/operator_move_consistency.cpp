@@ -59,7 +59,7 @@ TEST(operator_move_consistency) {
                     ASSERT_EQ_(*--gt_it, *--it, "An inconsistency was found when iterating backward");
             }
 
-            // insert and remove from list to ensure consistancy
+            // insert and remove from list to ensure consistency
             {
                 bool gt_walk_reversed = false,
                  cpy_walk_reversed = false,

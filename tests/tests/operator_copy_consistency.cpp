@@ -26,7 +26,7 @@ TEST(operator_copy_consistency) {
         ASSERT_EQ(n, mh.n_allocs());
         ASSERT_EQ(prev_n, mh.n_frees());
 
-        // Check consistancy of copy
+        // Check consistency of copy
         {
             ASSERT_EQ(gt_ll.size(), ll_cpy.size());
 
@@ -40,7 +40,7 @@ TEST(operator_copy_consistency) {
                 ASSERT_EQ_(*--gt_it, *--it, "An inconsistency was found when iterating backward");    
         }
         
-        // insert and remove from list to ensure consistancy
+        // insert and remove from list to ensure consistency
         {
             bool gt_walk_reversed = false,
                 cpy_walk_reversed = false,
