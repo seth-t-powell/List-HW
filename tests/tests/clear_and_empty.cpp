@@ -13,6 +13,8 @@ TEST(clear_and_empty) {
 
         List<int> * ll = new List<int>(sz, value);
 
+        auto constructorMemoryAllocations = mh.n_allocs();
+
         // Each node should be allocated individually
         ASSERT_EQ(sz, ll->size());
         if(sz) {
@@ -24,7 +26,7 @@ TEST(clear_and_empty) {
 
         ll->clear();
         
-        ASSERT_EQ(mh.n_allocs() - 1, mh.n_frees());
+        ASSERT_EQ(constructorMemoryAllocations - 1, mh.n_frees());
         ASSERT_EQ(0ULL, ll->size());
         ASSERT_EQ(true,ll->empty());
         ASSERT_EQ(true,ll->begin() == ll->end()); // Checks if head points to tail.
