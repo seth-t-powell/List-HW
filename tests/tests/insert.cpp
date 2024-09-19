@@ -9,7 +9,7 @@ TEST(insert) {
     Typegen t;
 
     for(size_t i = 0; i < TEST_ITER; i++) {
-        const size_t n = t.range(0x999ULL);
+        const size_t n = t.range(0x400ULL);
 
         {
             List<int> * ll = new List<int>();
@@ -22,7 +22,7 @@ TEST(insert) {
             auto gt_pos = gt_ll.cbegin();
             auto pos = ll->cbegin();
 
-            for(size_t i = 0; i < 20; i++) {
+            for(size_t i = 0; i < n; i++) {
                 size_t steps = t.range(gt_ll.size() + 1);
                 int value = t.get<int>();
 
