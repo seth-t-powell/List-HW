@@ -54,7 +54,9 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 
 **Complexity: O(1)**
 
-**Used in:** `constructor_default`, `insert`, `push_front`, `terminals`
+**Test For This Function:** *constructor_default*
+
+**Functions Used By This Test:** `List()`, `size()`, `cbegin()`, `cend()`, `iterator::operator==()`
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/list
 
@@ -65,18 +67,22 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 
 **Complexity: O(`count`)**
 
-**Used in:** `constructor_insert_copies`, `clear_and_empty`
+**Test For This Function:** *constructor_insert_copies*
+
+**Functions Used By This Test:** `List(count, value)`, `~List()`, `size()`, `cbegin()`, `cend()`, `iterator::operator!=()`, `iterator::operator*()`, `iterator::operator++(int)`, `iterator::operator--()`
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/list
 
 ----
 `explicit List( size_type count )`
 
-**Description:** Constructs a linked list with `count` default-inserted instances of `T`. No copies are made.
+**Description:** Constructs a linked list with `count` default-inserted instances of `T` (`T()`). No copies are made.
 
 **Complexity: O(`count`)**
 
-**Used in:** `constructor_default_inserted` & Frequently Utilized
+**Test For This Function:** *constructor_default_inserted*
+
+**Functions Used By This Test:** `List(count)`, `~List()`, `size()`, `cbegin()`, `cend()`, `iterator::operator!=()`, `iterator::operator*()`, `iterator::operator++(int)`, `iterator::operator--()`
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/list
 
@@ -87,7 +93,9 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 
 **Complexity: O(`other.size()`)**
 
-**Used in:** `constructor_copy`
+**Test For This Function:** *constructor_copy*
+
+**Functions Used By This Test:** `List(count)`, `List(const List&)`, `~List()`, `size()`, `cbegin()`, `cend()`, `iterator::operator!=()`, `iterator::operator*()`, `iterator::operator++(int)`, `iterator::operator--()`
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/list
 
@@ -98,7 +106,9 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 
 **Complexity: O(1)**
 
-**Used in:** `constructor_move`
+**Test For This Function:** *constructor_move*
+
+**Functions Used By This Test:** `List(count)`, `List(List&&)`, `size()`, `cbegin()`, `cend()`, `begin()`, `end()`, `iterator::operator!=()`, `iterator::operator==()`, `iterator::operator*()`, `iterator::operator++(int)`, `iterator::operator++()`, `iterator::operator--()`
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/list
 
@@ -109,7 +119,7 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 
 **Complexity: O(`size()`)**
 
-**Used in:** Frequently Utilized
+**Test For This Function:** No Direct Test, But Frequently Utilized
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/%7Elist
 
@@ -120,7 +130,9 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 
 **Complexity: O(max(`size()`, `other.size()`))**
 
-**Used in:** `operator_copy`, `operator_copy_consistency`
+**Test For This Function:** *operator_copy* and *operator_copy_consistency*
+
+**Functions Used By This Test:** `List(count)`, `operator=(const List&)`, `~List()`, `size()`, `begin()`, `end()`, `cbegin()`, `cend()`, `iterator::operator!=()`, `iterator::operator*()`, `iterator::operator++(int)`, `iterator::operator--()`, `insert(pos, const T&)`, `erase(pos)`
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/operator%3D
 
@@ -131,7 +143,9 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 
 **Complexity: O(`size()`)**
 
-**Used in:** `operator_move`
+**Test For This Function:** *operator_move* and *operator_move_consistency*
+
+**Functions Used By This Test:** `List(count)`, `operator=(List&&)`, `~List()`, `size()`, `begin()`, `end()`, `cbegin()`, `cend()`, `iterator::operator!=()`, `iterator::operator*()`, `iterator::operator++(int)`, `iterator::operator--()`, `insert(pos, const T&)`, `erase(pos)`
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/operator%3D
 
