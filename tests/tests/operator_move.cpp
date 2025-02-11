@@ -30,6 +30,7 @@ TEST(operator_move) {
             // check
             ASSERT_EQ(0ULL, ll.size());
             ASSERT_EQ(true,ll.begin() == ll.end());
+            ASSERT_EQ(true,++(--ll.end()) == ll.end());
             #endif
 
             // Ensure pointers are wired correctly
@@ -39,6 +40,9 @@ TEST(operator_move) {
             ASSERT_EQ(false,ll.end() == ll_cpy.begin());
 
             ASSERT_EQ(gt_ll.size(), ll_cpy.size());
+
+            // More explicitly check empty case
+            ASSERT_EQ(true,n > 0 || ++(--ll_cpy.end()) == ll_cpy.end());
 
             // No new allocs and previous memory should have been freed
             ASSERT_EQ(0ULL, mh.n_allocs());
