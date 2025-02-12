@@ -25,6 +25,7 @@ TEST(constructor_move) {
             // check
             ASSERT_EQ(0ULL, ll.size());
             ASSERT_EQ(true,ll.begin() == ll.end());
+            ASSERT_EQ(true,++(--ll.end()) == ll.end());
             #endif
             
             // Ensure pointers are wired correctly
@@ -32,6 +33,9 @@ TEST(constructor_move) {
             ASSERT_EQ(false,++(--ll.end()) == ll_cpy.end());
             ASSERT_EQ(false,++(--ll.end()) == ll_cpy.begin());
             ASSERT_EQ(false,ll.end() == ll_cpy.begin());
+
+            // More explicitly check empty case
+            ASSERT_EQ(true,n > 0 || ++(--ll_cpy.end()) == ll_cpy.end());
 
             ASSERT_EQ(0ULL, mh.n_allocs());
             ASSERT_EQ(0ULL, mh.n_frees());

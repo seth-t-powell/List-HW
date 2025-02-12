@@ -54,7 +54,9 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 
 **Complexity: O(1)**
 
-**Used in:** `constructor_default`, `insert`, `push_front`, `terminals`
+**Test For This Function:** *constructor_default*
+
+**Functions Used By This Test:** `List()`, `size()`, `cbegin()`, `cend()`, `iterator::operator==()`
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/list
 
@@ -65,18 +67,22 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 
 **Complexity: O(`count`)**
 
-**Used in:** `constructor_insert_copies`, `clear_and_empty`
+**Test For This Function:** *constructor_insert_copies*
+
+**Functions Used By This Test:** `List(count, value)`, `~List()`, `size()`, `cbegin()`, `cend()`, `iterator::operator!=()`, `iterator::operator*()`, `iterator::operator++(int)`, `iterator::operator--()`
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/list
 
 ----
 `explicit List( size_type count )`
 
-**Description:** Constructs a linked list with `count` default-inserted instances of `T`. No copies are made.
+**Description:** Constructs a linked list with `count` default-inserted instances of `T` (`T()`). No copies are made.
 
 **Complexity: O(`count`)**
 
-**Used in:** `constructor_default_inserted` & Frequently Utilized
+**Test For This Function:** *constructor_default_inserted*
+
+**Functions Used By This Test:** `List(count)`, `~List()`, `size()`, `cbegin()`, `cend()`, `iterator::operator!=()`, `iterator::operator*()`, `iterator::operator++(int)`, `iterator::operator--()`
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/list
 
@@ -87,7 +93,9 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 
 **Complexity: O(`other.size()`)**
 
-**Used in:** `constructor_copy`
+**Test For This Function:** *constructor_copy*
+
+**Functions Used By This Test:** `List(count)`, `List(const List&)`, `~List()`, `size()`, `cbegin()`, `cend()`, `iterator::operator!=()`, `iterator::operator*()`, `iterator::operator++(int)`, `iterator::operator--()`
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/list
 
@@ -98,7 +106,9 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 
 **Complexity: O(1)**
 
-**Used in:** `constructor_move`
+**Test For This Function:** *constructor_move*
+
+**Functions Used By This Test:** `List(count)`, `List(List&&)`, `size()`, `cbegin()`, `cend()`, `begin()`, `end()`, `iterator::operator!=()`, `iterator::operator==()`, `iterator::operator*()`, `iterator::operator++(int)`, `iterator::operator++()`, `iterator::operator--()`
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/list
 
@@ -109,7 +119,7 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 
 **Complexity: O(`size()`)**
 
-**Used in:** Frequently Utilized
+**Test For This Function:** No Direct Test, But Frequently Utilized
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/%7Elist
 
@@ -120,7 +130,9 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 
 **Complexity: O(max(`size()`, `other.size()`))**
 
-**Used in:** `operator_copy`, `operator_copy_consistency`
+**Test For This Function:** *operator_copy* and *operator_copy_consistency*
+
+**Functions Used By This Test:** `List(count)`, `operator=(const List&)`, `~List()`, `size()`, `begin()`, `end()`, `cbegin()`, `cend()`, `iterator::operator!=()`, `iterator::operator==()`, `iterator::operator*()`, `iterator::operator++(int)`, `iterator::operator--()`, `insert(pos, const T&)`, `erase(pos)`
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/operator%3D
 
@@ -131,7 +143,9 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 
 **Complexity: O(`size()`)**
 
-**Used in:** `operator_move`
+**Test For This Function:** *operator_move* and *operator_move_consistency*
+
+**Functions Used By This Test:** `List(count)`, `operator=(List&&)`, `~List()`, `size()`, `begin()`, `end()`, `cbegin()`, `cend()`, `iterator::operator!=()`, `iterator::operator==()`, `iterator::operator*()`, `iterator::operator++(int)`, `iterator::operator--()`, `insert(pos, const T&)`, `erase(pos)`
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/operator%3D
 
@@ -146,7 +160,9 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 
 **Complexity: O(1)**
 
-**Used in:** `terminals`
+**Test For This Function:** *terminals*
+
+**Functions Used By This Test:** `List()`, `List(count)`, `~List()`, `begin()`, `end()`, `cbegin()`, `cend()`, `iterator::operator==()`, `iterator::operator*()`, `iterator::operator--()`, `front()` (both), `back()` (both)
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/front
 
@@ -157,18 +173,24 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 
 **Complexity: O(1)**
 
-**Used in:** `terminals`
+**Test For This Function:** *terminals*
+
+**Functions Used By This Test:** `List()`, `List(count)`, `~List()`, `begin()`, `end()`, `cbegin()`, `cend()`, `iterator::operator==()`, `iterator::operator*()`, `iterator::operator--()`, `front()` (both), `back()` (both)
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/back
 
 ----
 `iterator begin()` and `const_iterator begin() const noexcept`
 
-**Description:** Returns an iterator (or const iterator) to the first element of the linked list. Returns an iterator to `tail` if empty.
+**Description:** Returns an iterator (or const iterator) to the first element of the linked list.
+
+Note: If the container is empty, this should be equivalent to `end()`. **This is NOT something that you should explicitly check for in `begin()`, but rather a sanity check for you to think about.**
 
 **Complexity: O(1)**
 
-**Used in:** `terminals` & Frequently Utilized
+**Test For This Function:** *terminals*
+
+**Functions Used By This Test:** `List()`, `List(count)`, `~List()`, `begin()`, `end()`, `cbegin()`, `cend()`, `iterator::operator==()`, `iterator::operator*()`, `iterator::operator--()`, `front()` (both), `back()` (both)
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/begin
 
@@ -179,18 +201,24 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 
 **Complexity: O(1)**
 
-**Used in:** `terminals` & Frequently Utilized
+**Test For This Function:** *terminals*
+
+**Functions Used By This Test:** `List()`, `List(count)`, `~List()`, `begin()`, `end()`, `cbegin()`, `cend()`, `iterator::operator==()`, `iterator::operator*()`, `iterator::operator--()`, `front()` (both), `back()` (both)
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/end
 
 ----
 `const_iterator cbegin() const noexcept`
 
-**Description:** Returns a const iterator to the first element of the linked list. Returns a const iterator to `tail` if empty.
+**Description:** Returns a const iterator to the first element of the linked list.
+
+Note: If the container is empty, this should be equivalent to `cend()`. **This is NOT something that you should explicitly check for in `cbegin()`, but rather a sanity check for you to think about.**
 
 **Complexity: O(1)**
 
-**Used in:** `terminals` & Frequently Utilized
+**Test For This Function:** *terminals*
+
+**Functions Used By This Test:** `List()`, `List(count)`, `~List()`, `begin()`, `end()`, `cbegin()`, `cend()`, `iterator::operator==()`, `iterator::operator*()`, `iterator::operator--()`, `front()` (both), `back()` (both)
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/begin
 
@@ -201,7 +229,9 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 
 **Complexity: O(1)**
 
-**Used in:** `terminals` & Frequently Utilized
+**Test For This Function:** *terminals*
+
+**Functions Used By This Test:** `List()`, `List(count)`, `~List()`, `begin()`, `end()`, `cbegin()`, `cend()`, `iterator::operator==()`, `iterator::operator*()`, `iterator::operator--()`, `front()` (both), `back()` (both)
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/end
 
@@ -212,7 +242,9 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 
 **Complexity: O(1)**
 
-**Used in:** `clear_and_empty`, `operator_copy_consistency`
+**Test For This Function:** *clear_and_empty*
+
+**Functions Used By This Test:** `List(count, value)`, `begin()`, `end()`, `size()`, `empty()`, `iterator::operator==()`, `iterator::operator*()`, `iterator::operator--()`, `iterator::operator++(int)`, `clear()`, `push_back copy`, `push_front copy`
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/empty
 
@@ -223,7 +255,7 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 
 **Complexity: O(1)**
 
-**Used in:** Frequently Utilized
+**Test For This Function:** No Direct Test, But Frequently Utilized
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/size
 
@@ -234,7 +266,9 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 
 **Complexity: O(`size()`)**
 
-**Used in:** `clear_and_empty`
+**Test For This Function:** *clear_and_empty*
+
+**Functions Used By This Test:** `List(count, value)`, `begin()`, `end()`, `size()`, `empty()`, `iterator::operator==()`, `iterator::operator*()`, `iterator::operator--()`, `iterator::operator++(int)`, `clear()`, `push_back copy`, `push_front copy`
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/clear
 
@@ -245,7 +279,9 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 
 **Complexity: O(1)**
 
-**Used in:** `insert`, `operator_copy_consistency`, `operator_move_consistency`
+**Test For This Function:** *insert*
+
+**Functions Used By This Test:** `List()`, `cbegin()`, `cend()`, `size()`, `iterator::operator==()`, `iterator::operator*()`, `iterator::operator--()`, `iterator::operator--(int)`, `iterator::operator++()`, `iterator::operator++(int)`, `insert copy`, `insert move`
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/insert
 
@@ -256,7 +292,9 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 
 **Complexity: O(1)**
 
-**Used in:** `erase`, `operator_copy_consistency`, `operator_move_consistency`
+**Test For This Function:** *erase*
+
+**Functions Used By This Test:** `List(count)`, `begin()`, `end()`, `size()`, `iterator::operator==()`, `iterator::operator*()`, `iterator::operator--()`, `iterator::operator--(int)`, `iterator::operator++()`, `iterator::operator++(int)`, `erase(pos)`
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/erase
 
@@ -267,7 +305,9 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 
 **Complexity: O(1)**
 
-**Used in:** `push_back`
+**Test For This Function:** *push_back*
+
+**Functions Used By This Test:** `List()`, `~List()`, `cbegin()`, `cend()`, `size()`, `iterator::operator!=()`, `iterator::operator*()`, `iterator::operator--()`, `iterator::operator++(int)`, `push_back copy`, `push_back move`
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/push_back
 
@@ -278,7 +318,9 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 
 **Complexity: O(1)**
 
-**Used in:** `pop_back`
+**Test For This Function:** *pop_back*
+
+**Functions Used By This Test:** `List(count)`, `begin()`, `end()`, `size()`, `iterator::operator*()`, `iterator::operator--()`, `iterator::operator++(int)`, `pop_back()`
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/pop_back
 
@@ -289,7 +331,9 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 
 **Complexity: O(1)**
 
-**Used in:** `push_front`
+**Test For This Function:** *push_front*
+
+**Functions Used By This Test:** `List()`, `~List()`, `cbegin()`, `cend()`, `size()`, `iterator::operator!=()`, `iterator::operator*()`, `iterator::operator--()`, `iterator::operator++(int)`, `push_front copy`, `push_front move`
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/push_front
 
@@ -300,7 +344,9 @@ Implement the following [constructors](https://en.cppreference.com/w/cpp/contain
 
 **Complexity: O(1)**
 
-**Used in:** `pop_front`
+**Test For This Function:** *pop_front*
+
+**Functions Used By This Test:** `List(count)`, `begin()`, `end()`, `size()`, `iterator::operator*()`, `iterator::operator--()`, `iterator::operator++(int)`, `pop_front()`
 
 **Link:** https://en.cppreference.com/w/cpp/container/list/pop_front
 
@@ -319,7 +365,9 @@ Implement `List::basic_iterator` which will create `iterator` and `const_iterato
 
 **Complexity: O(1)**
 
-**Used in:** `iterator`
+**Test For This Function:** *iterator*
+
+**Functions Used By This Test:** `List(count)`, `begin()`, `cbegin()`, `cend()`, `iterator::basic_iterator()`, `iterator::operator==()`, `iterator::operator!=()`, `iterator::operator*()`, `iterator::operator->()`, `iterator::operator--()`, `iterator::operator--(int)`, `iterator::operator++()`, `iterator::operator++(int)`
 
 ----
 `reference operator*() const`
@@ -328,7 +376,9 @@ Implement `List::basic_iterator` which will create `iterator` and `const_iterato
 
 **Complexity: O(1)**
 
-**Used in:** Frequently Utilized
+**Test For This Function:** *iterator*
+
+**Functions Used By This Test:** `List(count)`, `begin()`, `cbegin()`, `cend()`, `iterator::basic_iterator()`, `iterator::operator==()`, `iterator::operator!=()`, `iterator::operator*()`, `iterator::operator->()`, `iterator::operator--()`, `iterator::operator--(int)`, `iterator::operator++()`, `iterator::operator++(int)`
 
 ----
 `pointer operator->() const`
@@ -337,7 +387,9 @@ Implement `List::basic_iterator` which will create `iterator` and `const_iterato
 
 **Complexity: O(1)**
 
-**Used in:** `iterator`
+**Test For This Function:** *iterator*
+
+**Functions Used By This Test:** `List(count)`, `begin()`, `cbegin()`, `cend()`, `iterator::basic_iterator()`, `iterator::operator==()`, `iterator::operator!=()`, `iterator::operator*()`, `iterator::operator->()`, `iterator::operator--()`, `iterator::operator--(int)`, `iterator::operator++()`, `iterator::operator++(int)`
 
 ----
 `basic_iterator& operator++()`
@@ -346,7 +398,9 @@ Implement `List::basic_iterator` which will create `iterator` and `const_iterato
 
 **Complexity: O(1)** 
 
-**Used in:** `iterator` & Frequently Utilized
+**Test For This Function:** *iterator*
+
+**Functions Used By This Test:** `List(count)`, `begin()`, `cbegin()`, `cend()`, `iterator::basic_iterator()`, `iterator::operator==()`, `iterator::operator!=()`, `iterator::operator*()`, `iterator::operator->()`, `iterator::operator--()`, `iterator::operator--(int)`, `iterator::operator++()`, `iterator::operator++(int)`
 
 ----
 `basic_iterator operator++(int)`
@@ -355,7 +409,9 @@ Implement `List::basic_iterator` which will create `iterator` and `const_iterato
 
 **Complexity: O(1)**
 
-**Used in:** `iterator` & Frequently Utilized
+**Test For This Function:** *iterator*
+
+**Functions Used By This Test:** `List(count)`, `begin()`, `cbegin()`, `cend()`, `iterator::basic_iterator()`, `iterator::operator==()`, `iterator::operator!=()`, `iterator::operator*()`, `iterator::operator->()`, `iterator::operator--()`, `iterator::operator--(int)`, `iterator::operator++()`, `iterator::operator++(int)`
 
 ----
 `basic_iterator& operator--()`
@@ -364,7 +420,9 @@ Implement `List::basic_iterator` which will create `iterator` and `const_iterato
 
 **Complexity: O(1)**
 
-**Used in:** `iterator` & Frequently Utilized
+**Test For This Function:** *iterator*
+
+**Functions Used By This Test:** `List(count)`, `begin()`, `cbegin()`, `cend()`, `iterator::basic_iterator()`, `iterator::operator==()`, `iterator::operator!=()`, `iterator::operator*()`, `iterator::operator->()`, `iterator::operator--()`, `iterator::operator--(int)`, `iterator::operator++()`, `iterator::operator++(int)`
 
 ----
 `basic_iterator operator--(int)`
@@ -373,7 +431,9 @@ Implement `List::basic_iterator` which will create `iterator` and `const_iterato
 
 **Complexity: O(1)**
 
-**Used in:** `iterator` & Frequently Utilized
+**Test For This Function:** *iterator*
+
+**Functions Used By This Test:** `List(count)`, `begin()`, `cbegin()`, `cend()`, `iterator::basic_iterator()`, `iterator::operator==()`, `iterator::operator!=()`, `iterator::operator*()`, `iterator::operator->()`, `iterator::operator--()`, `iterator::operator--(int)`, `iterator::operator++()`, `iterator::operator++(int)`
 
 ----
 `bool operator==(const basic_iterator& other) const noexcept`
@@ -382,7 +442,9 @@ Implement `List::basic_iterator` which will create `iterator` and `const_iterato
 
 **Complexity: O(1)**
 
-**Used in:** `iterator` & Frequently Utilized
+**Test For This Function:** *iterator*
+
+**Functions Used By This Test:** `List(count)`, `begin()`, `cbegin()`, `cend()`, `iterator::basic_iterator()`, `iterator::operator==()`, `iterator::operator!=()`, `iterator::operator*()`, `iterator::operator->()`, `iterator::operator--()`, `iterator::operator--(int)`, `iterator::operator++()`, `iterator::operator++(int)`
 
 ----
 `bool operator!=(const basic_iterator& other) const noexcept`
@@ -391,7 +453,9 @@ Implement `List::basic_iterator` which will create `iterator` and `const_iterato
 
 **Complexity: O(1)**
 
-**Used in:** `iterator` & Frequently Utilized
+**Test For This Function:** *iterator*
+
+**Functions Used By This Test:** `List(count)`, `begin()`, `cbegin()`, `cend()`, `iterator::basic_iterator()`, `iterator::operator==()`, `iterator::operator!=()`, `iterator::operator*()`, `iterator::operator->()`, `iterator::operator--()`, `iterator::operator--(int)`, `iterator::operator++()`, `iterator::operator++(int)`
 
 ----
 
@@ -422,7 +486,9 @@ We provide for you a `class Queue` in [`Queue.h`](./src/Queue.h) and ask that yo
 
 **Complexity: O(1)**
 
-**Used in:** `queue_front_push_and_pop`
+**Test For This Function:** *queue_front_push_and_pop*
+
+**Functions Used By This Test:** `List()`, `Queue::push copy`, `Queue::pop()`, `Queue::front()`, `Queue::size()`
 
 ----
 `const_reference front()`
@@ -431,7 +497,9 @@ We provide for you a `class Queue` in [`Queue.h`](./src/Queue.h) and ask that yo
 
 **Complexity: O(1)**
 
-**Used in:** `queue_front_push_and_pop`
+**Test For This Function:** *queue_front_push_and_pop*
+
+**Functions Used By This Test:** `List()`, `Queue::push copy`, `Queue::pop()`, `Queue::front()`, `Queue::size()`
 
 ----
 `reference back()`
@@ -440,7 +508,9 @@ We provide for you a `class Queue` in [`Queue.h`](./src/Queue.h) and ask that yo
 
 **Complexity: O(1)**
 
-**Used in:** `queue_back_and_push`, `queue_push_move`
+**Test For This Function:** *queue_back_and_push*
+
+**Functions Used By This Test:** `List()`, `Queue::push copy`, `Queue::back()`, `Queue::size()`
 
 ----
 `const_reference back()`
@@ -449,7 +519,9 @@ We provide for you a `class Queue` in [`Queue.h`](./src/Queue.h) and ask that yo
 
 **Complexity: O(1)**
 
-**Used in:** `queue_back_and_push`
+**Test For This Function:** *queue_back_and_push*
+
+**Functions Used By This Test:** `List()`, `Queue::push copy`, `Queue::back()`, `Queue::size()`
 
 ----
 `bool empty()`
@@ -458,7 +530,9 @@ We provide for you a `class Queue` in [`Queue.h`](./src/Queue.h) and ask that yo
 
 **Complexity: O(1)**
 
-**Used in:** `queue_push_pop_and_empty`
+**Test For This Function:** *queue_push_pop_and_empty*
+
+**Functions Used By This Test:** `List()`, `Queue::push copy`, `Queue::pop()`, `Queue::size()`, `Queue::empty()`
 
 ----
 `size_type size()`
@@ -467,7 +541,7 @@ We provide for you a `class Queue` in [`Queue.h`](./src/Queue.h) and ask that yo
 
 **Complexity: O(1)**
 
-**Used in:** `queue_back_and_push`, `queue_push_pop_and_empty`, `queue_push_move`, `queue_front_push_and_pop`, `queue_equality_operator`
+**Test For This Function:** No Direct Test, But Frequently Utilized
 
 ----
 `void push(const value_type& value)`
@@ -476,7 +550,9 @@ We provide for you a `class Queue` in [`Queue.h`](./src/Queue.h) and ask that yo
 
 **Complexity: O(1)**
 
-**Used in:** `queue_back_and_push`, `queue_push_pop_and_empty`, `queue_front_push_and_pop`, `queue_equality_operator`
+**Test For This Function:** *queue_back_and_push*, *queue_push_pop_and_empty*, and *queue_front_push_and_pop*
+
+**Functions Used By These Tests:** See Specifications Above For Each Test
 
 ----
 `void push(value_type&& value)`
@@ -485,7 +561,9 @@ We provide for you a `class Queue` in [`Queue.h`](./src/Queue.h) and ask that yo
 
 **Complexity: O(1)**
 
-**Used in:** `queue_push_move`
+**Test For This Function:** *queue_push_move*
+
+**Functions Used By This Test:** `List()`, `Queue::push move`, `Queue::back()`, `Queue::size()`
 
 ----
 `void pop()`
@@ -494,16 +572,22 @@ We provide for you a `class Queue` in [`Queue.h`](./src/Queue.h) and ask that yo
 
 **Complexity: O(1)**
 
-**Used in:** `queue_push_pop_and_empty`, `queue_front_push_and_pop`
+**Test For This Function:** *queue_push_pop_and_empty* and *queue_front_push_and_pop*
+
+**Functions Used By These Tests:** See Specifications Above For Each Test
 
 ----
 `inline bool operator==(const Queue<T, Container>& lhs, const Queue<T, Container>& rhs)`
 
-**Description:** Determines if 2 queues are equivalent. If the 2 queues have different sizes, they are not equal. Should compare the individual elements of the underlying container.
+**Description:** Determines if 2 queues are equivalent. If the 2 queues have different sizes, they are not equal. Must compare the individual elements of the underlying container (i.e. all elements in each queue must be equal in order for 2 queues to be equal).
+
+Hint: Because this operator is marked as a `friend` of the `Queue` class, the underlying container (i.e. the underlying `List`) of `lhs` and `rhs` can be accessed by `lhs.c` and `rhs.c`, respectively.
 
 **Complexity: O(n)**
 
-**Used in:** `queue_equality_operator`
+**Test For This Function:** *queue_equality_operator*
+
+**Functions Used By This Test:** `List()`, `Queue::push copy`, `Queue::size()`, `operator==(const Queue&, const Queue&)`
 
 ----
 
