@@ -36,7 +36,7 @@ class List {
         explicit basic_iterator(const Node* ptr) noexcept : node{const_cast<Node*>(ptr)} {}
 
     public:
-        basic_iterator() { /* TODO */ };
+        basic_iterator() {this->node = nullptr;};
         basic_iterator(const basic_iterator&) = default;
         basic_iterator(basic_iterator&&) = default;
         ~basic_iterator() = default;
@@ -44,34 +44,50 @@ class List {
         basic_iterator& operator=(basic_iterator&&) = default;
 
         reference operator*() const {
-            // TODO
+            return this->node->data;
         }
         pointer operator->() const {
-            // TODO
+            //return &(this->node->data);
         }
 
         // Prefix Increment: ++a
         basic_iterator& operator++() {
-            // TODO
+            //prefix:
+            //this->node = this->node->next;
+            return *this;
         }
         // Postfix Increment: a++
         basic_iterator operator++(int) {
-            // TODO
+            //make a copy basic iterator:
+            basic_iterator temp = *this;
+            //this->node = this->node->next;
+            return temp;
         }
         // Prefix Decrement: --a
         basic_iterator& operator--() {
-            // TODO
+
+            this->node = this->node->prev;
+            return *this;
         }
         // Postfix Decrement: a--
         basic_iterator operator--(int) {
-            // TODO
+            basic_iterator temp = *this;
+            //this->node = this->node->prev;
+            return temp;
         }
 
         bool operator==(const basic_iterator& other) const noexcept {
-            // TODO
+            if(&this->node == &other.node){
+                return true;
+            }
+            return false;
+            
         }
         bool operator!=(const basic_iterator& other) const noexcept {
-            // TODO
+            if(&this->node != &other.node){
+                return true;
+            }
+            return false;
         }
     };
 
@@ -91,11 +107,19 @@ private:
     size_type _size;
 
 public:
-    List() {
-        // TODO - Don't forget to initialize the list beforehand
+    List() : head(Node()), tail(Node()), _size(0) {
+
     }
-    List( size_type count, const T& value ) {
-        // TODO - Don't forget initialize the list beforehand
+    List( size_type count, const T& value ) : head(Node()), tail(Node()), _size(count) {
+        //need to create new nodes:
+        Node* A = new Node(value, &head, &tail);
+        head.next = A;
+        tail.prev = A;
+        for(int i = 1; i < _size; i++){
+            Node* B = new Node(value, tail.prev, &tail);
+            tail.prev = B;
+        }
+        
     }
     explicit List( size_type count ) {
         // TODO - Don't forget initialize the list beforehand
@@ -137,7 +161,7 @@ public:
         // TODO
     }
     const_iterator cbegin() const noexcept {
-        // TODO
+        return const_iterator(head.next);
     }
 
     iterator end() noexcept {
@@ -147,7 +171,7 @@ public:
         // TODO
     }
     const_iterator cend() const noexcept {
-        // TODO
+        return const_iterator(tail.prev);
     }
 
     bool empty() const noexcept {
@@ -155,7 +179,7 @@ public:
     }
 
     size_type size() const noexcept {
-        // TODO
+        return _size;
     }
 
     void clear() noexcept {
