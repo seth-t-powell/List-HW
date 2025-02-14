@@ -44,47 +44,50 @@ class List {
         basic_iterator& operator=(basic_iterator&&) = default;
 
         reference operator*() const {
-            return this->node->data;
+            return (this->node->data);
         }
         pointer operator->() const {
-            //return &(this->node->data);
+            return &(this->node->data);
         }
 
         // Prefix Increment: ++a
         basic_iterator& operator++() {
-            //prefix:
-            //this->node = this->node->next;
+            if(node->next == nullptr){
+                return *this;
+            }
+            node = node->next;
             return *this;
         }
         // Postfix Increment: a++
         basic_iterator operator++(int) {
-            //make a copy basic iterator:
             basic_iterator temp = *this;
-            //this->node = this->node->next;
+            ++(*this);
             return temp;
         }
         // Prefix Decrement: --a
         basic_iterator& operator--() {
-
-            this->node = this->node->prev;
+            if(node->prev == nullptr){
+                return *this;
+            }
+            node = node->prev;
             return *this;
         }
         // Postfix Decrement: a--
         basic_iterator operator--(int) {
             basic_iterator temp = *this;
-            //this->node = this->node->prev;
+            --(*this);
             return temp;
         }
 
         bool operator==(const basic_iterator& other) const noexcept {
-            if(&this->node == &other.node){
+            if(node == other.node){
                 return true;
             }
             return false;
             
         }
         bool operator!=(const basic_iterator& other) const noexcept {
-            if(&this->node != &other.node){
+            if(node != other.node){
                 return true;
             }
             return false;
@@ -108,74 +111,171 @@ private:
 
 public:
     List() : head(Node()), tail(Node()), _size(0) {
+        head.next = &tail;
+        tail.prev = &head;
 
     }
     List( size_type count, const T& value ) : head(Node()), tail(Node()), _size(count) {
-        //need to create new nodes:
-        Node* A = new Node(value, &head, &tail);
-        head.next = A;
-        tail.prev = A;
-        for(int i = 1; i < _size; i++){
-            Node* B = new Node(value, tail.prev, &tail);
-            tail.prev = B;
+        //perform count pushbacks:
+        if(_size != 0){
+            Node* A = new Node(value, &head, &tail);
+            head.next = A;
+            tail.prev = A;
+            for(size_t i = 1; i < _size; i++){
+                Node* current = new Node(value, tail.prev, &tail);
+                tail.prev->next = current;
+                tail.prev = current;
+            }
         }
+        else{
+            head.next = &tail;
+            tail.prev = &head;
+        }
+    }
+    explicit List( size_type count ) : head(Node()), tail(Node()), _size(count) {
+        //perform count pushbacks:
+        if(_size != 0){
+            Node* A = new Node(T(), &head, &tail);
+            head.next = A;
+            tail.prev = A;
+            for(size_t i = 1; i < _size; i++){
+                Node* current = new Node(T(), tail.prev, &tail);
+                tail.prev->next = current;
+                tail.prev = current;
+            }
+        }
+        else{
+            head.next = &tail;
+            tail.next = &head;
+        }
+
+    }
+    List( const List& other ) : head(Node()), tail(Node()), _size(other._size) {
+            head.next = &tail;
+            tail.prev = &head;
+            //need to use copy semantics:
+            for(basic_iterator i = other.begin(); i != other.end(); i++){
+                //get the data at others node:
+                T info = *i;
+                Node* A = new Node(info, tail.prev, &tail);
+                tail.prev->next = A;
+                tail.prev = A;
+                
+            }
         
     }
-    explicit List( size_type count ) {
-        // TODO - Don't forget initialize the list beforehand
-    }
-    List( const List& other ) {
-        // TODO - Don't forget initialize the list beforehand
-    }
-    List( List&& other ) {
-        // TODO - Don't forget initialize the list beforehand
+    //move constructor:
+    List( List&& other) : head(Node()), tail(Node()), _size(other._size) {
+        //go through the for loop:
+        Node* current = other.head.next;
+        head.next = &tail;
+        tail.prev = &head;
+        for(int i = 0; i < _size; i++){
+            Node* tmp = current->next;
+            current->next = &tail;
+            current->prev = tail.prev;
+            tail.prev->next = current;
+            tail.prev = current;
+            current = tmp;
+        }
+        other._size = 0;
+        other.head.next = &other.tail;
+        other.tail.prev = &other.head;
+
     }
     ~List() {
-        // TODO
+        for(int i = 0; i < _size; i++){
+            Node* current = tail.prev->prev;
+            delete tail.prev;
+            tail.prev = nullptr;
+            tail.prev = current;
+        }
     }
     List& operator=( const List& other ) {
-        // TODO
+        if(this->begin() == other.begin()){
+            return *this;
+        }
+        else{
+            clear();
+            head.next = &tail;
+            tail.prev = &head;
+            _size = other._size;
+            //need to use copy semantics:
+            for(basic_iterator i = other.begin(); i != other.end(); i++){
+                //get the data at others node:
+                T info = *i;
+                Node* A = new Node(info, tail.prev, &tail);
+                tail.prev->next = A;
+                tail.prev = A;
+                
+            }
+            return *this;
+        }
     }
+    //move operator:
     List& operator=( List&& other ) noexcept {
-        // TODO
+        if(this->begin() == other.begin()){
+            return *this;
+        }
+        else{
+            //create a new list to move everything into:
+            clear();
+            //go through the for loop:
+            Node* current = other.head.next;
+            head.next = &tail;
+            tail.prev = &head;
+            _size = other._size;
+            for(int i = 0; i < _size; i++){
+                Node* tmp = current->next;
+                current->next = &tail;
+                current->prev = tail.prev;
+                tail.prev->next = current;
+                tail.prev = current;
+                current = tmp;
+            }
+            other._size = 0;
+            other.head.next = &other.tail;
+            other.tail.prev = &other.head;
+
+        }
     }
 
     reference front() {
-        // TODO
+        return head.next->data;
     }
     const_reference front() const {
-        // TODO
+        return head.next->data;
     }
 	
     reference back() {
-        // TODO
+        return tail.prev->data;
     }
     const_reference back() const {
-        // TODO
+        return tail.prev->data;
     }
 	
     iterator begin() noexcept {
-        // TODO
+        return iterator(head.next);
     }
     const_iterator begin() const noexcept {
-        // TODO
+        return const_iterator(head.next);
     }
     const_iterator cbegin() const noexcept {
         return const_iterator(head.next);
     }
 
     iterator end() noexcept {
-        // TODO
+        return iterator(&tail);
     }
     const_iterator end() const noexcept {
-        // TODO
+        return const_iterator(&tail);
     }
     const_iterator cend() const noexcept {
-        return const_iterator(tail.prev);
+        return const_iterator(&tail);
     }
 
     bool empty() const noexcept {
-        // TODO
+        return _size == 0;
     }
 
     size_type size() const noexcept {
@@ -183,7 +283,14 @@ public:
     }
 
     void clear() noexcept {
-        // TODO
+        //completely clear:
+        for(int i = 0; i < _size; i++){
+            Node* current = tail.prev->prev;
+            delete tail.prev;
+            tail.prev = nullptr;
+            tail.prev = current;
+        }
+        
     }
 
     iterator insert( const_iterator pos, const T& value ) {
@@ -198,14 +305,28 @@ public:
     }
 
     void push_back( const T& value ) {
-        // TODO
+        //add to the very end:
+        Node* current = new Node(value, tail.prev, &tail);
+        tail.prev->next = current;
+        tail.prev = current;
+        _size++;
     }
     void push_back( T&& value ) {
-        // TODO
+        //pushback with move:
+        Node* current = new Node(std::move(value), tail.prev, &tail);
+        tail.prev->next = current;
+        tail.prev = current;
+        _size++;
     }
 
     void pop_back() {
-        // TODO
+        //remove the element:
+        Node* tmp = tail.prev->prev;
+        delete tail.prev;
+        tail.prev = nullptr;
+        tail.prev = tmp;
+        tmp->next = &tail;
+        _size--;
     }
 	
     void push_front( const T& value ) {
@@ -216,7 +337,13 @@ public:
     }
 
     void pop_front() {
-        // TODO
+        //remove front element:
+        Node* tmp = head.next->next;
+        delete head.next;
+        head.next = nullptr;
+        head.next = tmp;
+        tmp->prev = &head;
+        _size--;
     }
 
     /*
